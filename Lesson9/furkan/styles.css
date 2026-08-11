@@ -7,11 +7,16 @@ body {
 }
 
 h1 {
-    margin: 20px;
+    margin-left: 20px;
     color: darkcyan;
 }
 
-p {
+h2 {
     margin-left: 30px;
-    color:chocolate;
+    color: chocolate;
+}
+
+p {
+    margin-left: 40px;
+    color: brown;
 }
