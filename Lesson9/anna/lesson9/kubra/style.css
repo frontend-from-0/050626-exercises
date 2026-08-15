@@ -1,0 +1,25 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: azure;
+    text-align: center;
+    padding: 50px;
+}
+h1{
+    color: blueviolet;
+}
+p{
+    color: deeppink;
+    font-size: 18px;
+}
+button{
+    background-color: burlywood;
+    color: brown;
+    border: none;
+    padding: 15px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: brown;
+    color: burlywood;
+}
