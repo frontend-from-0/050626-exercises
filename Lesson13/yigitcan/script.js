@@ -135,6 +135,7 @@ console.log(areEqualIgnoreCase("Dog", "Cat"));
 console.log(areEqualIgnoreCase("Dog  ", "Dog"));
 console.log(areEqualIgnoreCase("  ", "Dog"));
 console.log(areEqualIgnoreCase("Dog", 6));
+console.log(areEqualIgnoreCase("Dog", "  "));
 
 console.log('----------------------')
 
@@ -153,12 +154,34 @@ console.log('----------------------')
 
 /*
 10. Check Even or Odd (if-else)
-   - Define a function `evenOrOdd(number)` that:
+   - Define a function `everOrOdd(number)` that:
      - Logs "Even" if the number is even
      - Logs "Odd" if the number is odd
 */
-console.log('Ex . -----------------')
 
+function everOrOdd(number) {
+
+  if ((number % 2 === 0)) {
+    return "Number is even";
+  } else if(number % 2 === 1) {
+    return "Number is odd";
+  } else {
+    return "Invalid Input";
+  }
+  
+  }
+
+
+ console.log('Ex 10. -----------------')
+
+ console.log(everOrOdd(10));
+ console.log(everOrOdd(-7));
+ console.log(everOrOdd(0));
+ console.log(everOrOdd(1));
+ console.log(everOrOdd("one"));
+ console.log(everOrOdd(3.17));
+ console.log(everOrOdd(NaN));
+ 
 
 console.log('----------------------')
 
@@ -168,8 +191,28 @@ console.log('----------------------')
      and checks if it starts with "https" using .startsWith().
    - Log "Secure connection" if true, otherwise "Unsecure connection".
 */
-console.log('Ex . -----------------')
 
+function checkProtocol(url) {
+
+  if (typeof url !== "string")  {
+    return "Invalid input.";
+   }
+
+  const protocolChecker = url.toLowerCase().startsWith("https");
+
+  if(protocolChecker) {
+    return "Secure connection";
+ } else {
+  return "Unsecure connection";
+ } 
+}
+
+console.log('Ex 11. -----------------')
+
+
+console.log(checkProtocol("httPS:www.url.com"));
+console.log(checkProtocol("www.abc.com"));
+console.log(checkProtocol(12));
 
 console.log('----------------------')
 
@@ -182,18 +225,46 @@ console.log('----------------------')
      7 -> "Sunday"
      - Log the matched day or "Invalid day" if out of range.
 */
-console.log('Ex . -----------------')
 
 
+function getDayofWeek(num) {
+ 
+  if (num === 0 || num > 7 || typeof num === "string") {
+    return "Invalid day";
+  }
+
+
+  switch (num) {  
+    case 1 :
+    return "Monday";
+  
+    case 2 :
+      return "Tuesday";
+    case 3 : 
+    return "Wednesday";
+    case 4 : 
+    return "Thursday";
+    case 5 : 
+    return "Friday";
+    case 6 : 
+    return "Saturday";
+    case 7 : 
+    return "Sunday";
+  } }
+
+console.log('Ex 12. -----------------')
+console.log(getDayofWeek(1));
+console.log(getDayofWeek(3));
+console.log(getDayofWeek(7));
+console.log(getDayofWeek(8));
+console.log(getDayofWeek(0));
+console.log(getDayofWeek(NaN));
+console.log(getDayofWeek("Monday"));
 console.log('----------------------')
 
 // value == value
 /// value and type === value and type
 
-console.log('Ex . -----------------')
-
-
-console.log('----------------------')
 
 /*
 13. Repeat a String
@@ -202,11 +273,15 @@ console.log('----------------------')
    - Log the repeated result.
 */
 
+function repeatWord(word, times) {
 
+  const lotsOfTimes = word.repeat(times);
+  
+  return "Repeated result is " + lotsOfTimes;
+}
 
-console.log('Ex . -----------------')
-
-
+console.log('Ex 13. -----------------')
+console.log(repeatWord("ankaramessi", 5));
 console.log('----------------------')
 
 /*
@@ -216,9 +291,20 @@ console.log('----------------------')
    - Log the censored sentence.
 */
 
-console.log('Ex . -----------------')
+
+function censorWord(sentence, target) {
 
 
+  const replaced = "*".repeat(target.length); 
+
+  const censored = sentence.replaceAll(target, replaced);
+
+  return censored;
+}
+
+console.log('Ex 14. -----------------')
+console.log(censorWord("thunderbolt and lightning very very frightning me", "very"));
+console.log(censorWord("shake shake shake senora, shake it all the time", "shake"));
 console.log('----------------------')
 
 /*
@@ -229,9 +315,23 @@ console.log('----------------------')
 */
 
 
-console.log('Ex . -----------------')
 
 
+function startsWithA(str) {
+
+  const firstChar = str.charAt(0);
+  const lowered = firstChar.toLowerCase();
+
+  if(lowered === "a") {
+    return "Starts with A";
+  } else {
+    return "Doesnt start with A";
+  }
+  
+}
+console.log('Ex 15. -----------------')
+console.log(startsWithA("Agony"));
+console.log(startsWithA("Javascript"));
 console.log('----------------------')
 
 /*
@@ -242,9 +342,15 @@ console.log('----------------------')
 */
 
 
-console.log('Ex . -----------------')
+function sliceLastN(text, n) {
+  const sliced = text.slice(-n); 
+
+  return "The sliced result is " + sliced;
+}
 
 
+console.log('Ex 16. -----------------')
+console.log(sliceLastN("Javascript" , 3));
 console.log('----------------------')
 
 /*
@@ -259,10 +365,35 @@ console.log('----------------------')
 */
 
 
+function gradeChecker(score) {
 
-console.log('Ex . -----------------')
+ if (score < 0 || score > 100) {
+  return "Invalid Input";
+ }
+  
+  if (score < 60) {
+    return "F";
+  } else if (score >= 60 && score <70) {
+    return "D";
+  } else if (score >=70 && score < 80) {
+    return "C";
+  } else if (score >=80 & score < 90) {
+    return "B";
+  } else if (score >= 90 && score <=100) {
+    return "A";
+  } 
+ }
 
 
+console.log('Ex 17. -----------------')
+
+console.log(gradeChecker(-10));
+console.log(gradeChecker(120));
+console.log(gradeChecker(50));
+console.log(gradeChecker(61));
+console.log(gradeChecker(71));
+console.log(gradeChecker(81));
+console.log(gradeChecker(91));
 console.log('----------------------')
 
 /*
@@ -273,7 +404,7 @@ console.log('----------------------')
 */
 
 
-console.log('Ex . -----------------')
+console.log('Ex 18. -----------------')
 
 
 console.log('----------------------')
@@ -288,9 +419,17 @@ console.log('----------------------')
    - Log the result for at least two different strings.
 */
 
+function capitalizeFirst(text) {
 
-console.log('Ex . -----------------')
+  const capitalized = text.charAt(0).toUpperCase();
+  const sliced = text.slice(1);
 
+  return capitalized + sliced; 
+}
+
+
+console.log('Ex 19. -----------------')
+console.log(capitalizeFirst("yigit"));
 
 console.log('----------------------')
 
@@ -303,9 +442,27 @@ console.log('----------------------')
      - anything else -> "Invalid color"
 */
 
-console.log('Ex . -----------------')
+function trafficLight(color) {
+
+  const lowered = color.toLowerCase();
 
 
+  switch (lowered) {
+    case "red": 
+    return "Stop!";
+
+    case "yellow" : 
+    return "Caution";
+
+    case "green" : 
+    return "Go";
+  }
+}
+
+console.log('Ex 20. -----------------')
+console.log(trafficLight("Green"));
+console.log(trafficLight("yelLOw"));
+console.log(trafficLight("red"));
 console.log('----------------------')
 
 /*
@@ -315,10 +472,18 @@ console.log('----------------------')
    - Log "Long string" or "Short string".
 */
 
+function isLongString(str) {
+ 
+  if (str.length > 10) {
+    return "Long String";
+  } else {
+    return "Short String";
+  }
+}
 
-
-console.log('Ex . -----------------')
-
+console.log('Ex 21. -----------------')
+console.log(isLongString("asdskdaskdkadka"));
+console.log(isLongString("sdasds"));
 
 console.log('----------------------')
 
@@ -331,8 +496,20 @@ console.log('----------------------')
 */
 
 
-console.log('Ex . -----------------')
+function isSpam(text) {
+  const lowered = text.toLowerCase();
+  const incl = lowered.includes("spam");
 
+  if (incl) {
+    return "This text is spam.";
+  } else {
+    return "This text is not spam.";
+  }
+}
+
+
+console.log('Ex 22. -----------------')
+console.log(isSpam("spAm text"));
 
 console.log('----------------------')
 
@@ -344,9 +521,18 @@ console.log('----------------------')
    - Uppercase each letter and log in the form "J.D."
    - Do not use loops; assume exactly two words.
 */
-console.log('Ex . -----------------')
+
+function getTwoPartInitials(fullname) {
+  const separated = fullname.split(" ");
+  const firstpart = separated[0].charAt(0).toUpperCase();
+  const secondpart = separated[1].charAt(0).toUpperCase();
+
+  return firstpart + "." + secondpart + ".";
+} 
 
 
+console.log('Ex 23. -----------------')
+console.log(getTwoPartInitials("yigitcan yesilyurt"));
 console.log('----------------------')
 
 
@@ -360,10 +546,39 @@ console.log('----------------------')
    - Log the season or "Invalid month" if out of range.
 */
 
+function getSeason(monthNum) {
 
-console.log('Ex . -----------------')
+if (monthNum <= 0 || monthNum > 12) {
+  return "Invalid Month";
+}
 
+  switch(monthNum) {
+    case 12:
+    case 1:
+    case 2:
+      return "Winter";
+    case 3:
+    case 4:
+    case 5: 
+      return "Spring";
+    case 6: 
+    case 7: 
+    case 8: 
+      return "Summer";
+    case 9: 
+    case 10:
+    case 11: 
+      return "Autumn";
+  }
+}
 
+console.log('Ex 24. -----------------')
+console.log(getSeason(12));
+console.log(getSeason(3));
+console.log(getSeason(6));
+console.log(getSeason(9));
+console.log(getSeason(0));
+console.log(getSeason(13));
 console.log('----------------------')
 
 /*
@@ -375,7 +590,7 @@ console.log('----------------------')
    - Test with strings like "hello", "room 5", and "abc123".
 */
 
-console.log('Ex . -----------------')
+console.log('Ex 25. -----------------')
 
 
 console.log('----------------------')
@@ -388,7 +603,7 @@ console.log('----------------------')
 */
 
 
-console.log('Ex . -----------------')
+console.log('Ex 26. -----------------')
 
 
 console.log('----------------------')
@@ -401,7 +616,7 @@ console.log('----------------------')
 */
 
 
-console.log('Ex . -----------------')
+console.log('Ex 27. -----------------')
 
 
 console.log('----------------------')
@@ -417,7 +632,7 @@ console.log('----------------------')
 
 
 
-console.log('Ex . -----------------')
+console.log('Ex 28. -----------------')
 
 
 console.log('----------------------')
@@ -431,7 +646,7 @@ console.log('----------------------')
 
 
 
-console.log('Ex . -----------------')
+console.log('Ex 29. -----------------')
 
 
 console.log('----------------------')
@@ -446,3 +661,12 @@ console.log('----------------------')
      - Otherwise -> "Invalid operator"
    - Log the result.
 */
+
+
+
+console.log('Ex 29. -----------------')
+
+function calculate (a, operator, b) {
+
+}
+console.log('----------------------')
