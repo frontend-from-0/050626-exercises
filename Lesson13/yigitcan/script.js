@@ -100,11 +100,6 @@ console.log('----------------------')
 */
 
 
-
-/* I realize this wasn't the exact solution of this exercise. But i prefer to leave it like this
-because it was quite educational for me to practice different concepts. 
-*/
-
 function areEqualIgnoreCase(str1, str2) {
 
    if (typeof str1 !== "string" || typeof str2 !== "string")  {
@@ -147,8 +142,18 @@ console.log('----------------------')
    - Log the final truncated string.
 */
 
-console.log('Ex . -----------------')
+function truncatesString(text, maxLength) {
+  const sliced = text.slice(0, maxLength );
+  
+  if (text.length > maxLength) {
+    return sliced + "...";
+  } else {
+    return sliced;
+  }
+}
 
+console.log('Ex 9. -----------------')
+console.log(truncatesString("Yigitcan", 3));
 
 console.log('----------------------')
 
@@ -159,11 +164,11 @@ console.log('----------------------')
      - Logs "Odd" if the number is odd
 */
 
-function everOrOdd(number) {
+function evenOrOdd(number) {
 
   if ((number % 2 === 0)) {
     return "Number is even";
-  } else if(number % 2 === 1) {
+  } else if(number % 2 === 1 || number % 2 === -1) {
     return "Number is odd";
   } else {
     return "Invalid Input";
@@ -174,13 +179,13 @@ function everOrOdd(number) {
 
  console.log('Ex 10. -----------------')
 
- console.log(everOrOdd(10));
- console.log(everOrOdd(-7));
- console.log(everOrOdd(0));
- console.log(everOrOdd(1));
- console.log(everOrOdd("one"));
- console.log(everOrOdd(3.17));
- console.log(everOrOdd(NaN));
+ console.log(evenOrOdd(10));
+ console.log(evenOrOdd(-7));
+ console.log(evenOrOdd(0));
+ console.log(evenOrOdd(1));
+ console.log(evenOrOdd("one"));
+ console.log(evenOrOdd(3.17));
+ console.log(evenOrOdd(NaN));
  
 
 console.log('----------------------')
@@ -229,17 +234,14 @@ console.log('----------------------')
 
 function getDayofWeek(num) {
  
-  if (num === 0 || num > 7 || typeof num === "string") {
-    return "Invalid day";
-  }
+
 
 
   switch (num) {  
     case 1 :
     return "Monday";
-  
     case 2 :
-      return "Tuesday";
+    return "Tuesday";
     case 3 : 
     return "Wednesday";
     case 4 : 
@@ -250,6 +252,9 @@ function getDayofWeek(num) {
     return "Saturday";
     case 7 : 
     return "Sunday";
+
+    default :
+    return "Invalid day";
   } }
 
 console.log('Ex 12. -----------------')
@@ -377,7 +382,7 @@ function gradeChecker(score) {
     return "D";
   } else if (score >=70 && score < 80) {
     return "C";
-  } else if (score >=80 & score < 90) {
+  } else if (score >=80 && score < 90) {
     return "B";
   } else if (score >= 90 && score <=100) {
     return "A";
@@ -403,10 +408,13 @@ console.log('----------------------')
    - Log the result.
 */
 
+function replaceCharacter(str, oldChar, newChar) {
+  const replaced = str.replaceAll(oldChar, newChar);
+  return replaced;
+}
 
 console.log('Ex 18. -----------------')
-
-
+console.log(replaceCharacter("Yigitcan", "i", "a"));
 console.log('----------------------')
 
 /*
@@ -456,6 +464,9 @@ function trafficLight(color) {
 
     case "green" : 
     return "Go";
+
+    default : 
+    return "Invalid Color";
   }
 }
 
@@ -463,6 +474,7 @@ console.log('Ex 20. -----------------')
 console.log(trafficLight("Green"));
 console.log(trafficLight("yelLOw"));
 console.log(trafficLight("red"));
+console.log(trafficLight("purple"));
 console.log('----------------------')
 
 /*
@@ -590,9 +602,20 @@ console.log('----------------------')
    - Test with strings like "hello", "room 5", and "abc123".
 */
 
+
+function containsNumber(str) {
+  const matched = str.match(/\d/);
+
+  if(matched) {
+    return "Contains Number";
+  } else {
+    return "No number found";
+  }
+}
+
 console.log('Ex 25. -----------------')
-
-
+console.log(containsNumber("ycy90"));
+console.log(containsNumber("Hello World"));
 console.log('----------------------')
 
 /*
@@ -603,9 +626,20 @@ console.log('----------------------')
 */
 
 
+
+function padString(str, maxLength) {
+
+  const lengthy = str.padEnd(maxLength, "*");
+
+  if (str.length < maxLength) {
+    return lengthy; 
+  } else {
+    return str;
+  }
+}
+
 console.log('Ex 26. -----------------')
-
-
+console.log(padString("hello", 10));
 console.log('----------------------')
 
 /*
@@ -615,10 +649,22 @@ console.log('----------------------')
      - "Too young to vote" otherwise
 */
 
+function canVote(age) {
+
+  if (age >=18 && age <=120) {
+  return "You can vote";
+} else if (age < 18 && age > 0) {
+  return "Too young to vote";
+} else {
+  return "Invalid Input";
+} }
+
 
 console.log('Ex 27. -----------------')
-
-
+console.log(canVote(18));
+console.log(canVote(17));
+console.log(canVote(121));
+console.log(canVote(-10));
 console.log('----------------------')
 
 
@@ -630,11 +676,15 @@ console.log('----------------------')
    - Example: "hello" -> "olleh"
 */
 
+function reverseString(text) {
+  const reversed = text.split("").reverse().join("");
+  return reversed;
+}
 
 
 console.log('Ex 28. -----------------')
-
-
+console.log(reverseString("Hello"));
+console.log(reverseString("Hello World"));
 console.log('----------------------')
 
 /*
@@ -644,11 +694,20 @@ console.log('----------------------')
    - Log the index or log "Not found" if it's -1.
 */
 
+function findWordPosition(sentence, word) {
+  const positionWord = sentence.indexOf(word);
+
+  if (positionWord !== -1) {
+    return positionWord;
+  } else {
+    return "Not Found";
+  }
+}
 
 
 console.log('Ex 29. -----------------')
-
-
+console.log(findWordPosition("Ali ata bak", "Ali"));
+console.log(findWordPosition("Ali ata bak", "kediye"));
 console.log('----------------------')
 
 /*
@@ -664,9 +723,26 @@ console.log('----------------------')
 
 
 
-console.log('Ex 29. -----------------')
+
 
 function calculate (a, operator, b) {
 
+  switch (operator) {
+    case "+" :
+    return a + b; 
+    case "-" :
+    return a - b;
+    case "*" :
+    return a * b;
+    case "/" :
+    return a / b;
+    default :
+    return "Invalid Operator";
+  }
 }
+
+console.log('Ex 29. -----------------')
+console.log(calculate(5, "%" , 7));
+console.log(calculate(5, "+" , 7));
+console.log(calculate(5, ">" , 7));
 console.log('----------------------')
