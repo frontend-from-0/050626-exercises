@@ -628,14 +628,7 @@ console.log('----------------------')
 
 
 function padString(str, maxLength) {
-
-  const lengthy = str.padEnd(maxLength, "*");
-
-  if (str.length < maxLength) {
-    return lengthy; 
-  } else {
-    return str;
-  }
+  return str.padEnd(maxLength, "*");
 }
 
 console.log('Ex 26. -----------------')
