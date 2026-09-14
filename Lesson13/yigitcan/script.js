@@ -118,7 +118,7 @@ function areEqualIgnoreCase(str1, str2) {
 
   if(lowerCased1 === lowerCased2) {
     return "Strings are equal";
-  } else if (lowerCased1 !== lowerCased2) {
+  } else {
     return "Strings are not equal";
   } 
 }
