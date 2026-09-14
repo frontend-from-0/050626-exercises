@@ -142,7 +142,7 @@ console.log('----------------------')
    - Log the final truncated string.
 */
 
-function truncatesString(text, maxLength) {
+function truncateString(text, maxLength) {
   const sliced = text.slice(0, maxLength );
   
   if (text.length > maxLength) {
