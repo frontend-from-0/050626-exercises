@@ -90,7 +90,7 @@ console.log("Ex. 18.2. The result is:", subtractionDifference);
 
 const applicantFirstName = 'Yigit';
 const applicantLastName =  'Yesilyurt';
-const applicantFullName = applicantFirstName + " " +applicantLastName;
+const applicantFullName = applicantFirstName + " " + applicantLastName;
 
 console.log('Ex. 19. Full name of applicant is:', applicantFullName);
 
