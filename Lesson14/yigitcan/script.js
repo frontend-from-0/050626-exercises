@@ -207,6 +207,7 @@ doubleValues([1, 2, 3, '4']);
      to log each character in the string on a separate line.
 */
 
+console.log('EX. 8. ------------');
 
 function printCharacters(str) {
  
@@ -216,6 +217,8 @@ function printCharacters(str) {
 }
 printCharacters("yigit");
 
+console.log('-------------------');
+
 /*
 9. Sum All Values in an Object
    - Define a function `sumObjectValues(obj)` that iterates over the
@@ -223,6 +226,8 @@ printCharacters("yigit");
    - Log the sum.
    - Example: {a: 10, b: 20, c: 5} -> 35
 */
+
+console.log('EX. 9. ------------');
 
 function sumObjectValues(obj) {
   let sum = 0;
@@ -234,13 +239,15 @@ function sumObjectValues(obj) {
 
 sumObjectValues({a:10, b: 20, c: 5});
 
-
+console.log('-------------------');
 /*
 10. Print Keys of an Object (For-in)
     - Define a function `printObjectKeys(obj)` that uses a for-in loop
       to log each key of the object.
     - Example: { name: "Alice", age: 25 } -> logs "name", then "age"
 */
+
+console.log('EX. 10. ------------');
 
 function printObjectKeys(obj) {
   for(const key in obj) {
@@ -250,12 +257,15 @@ function printObjectKeys(obj) {
 
 printObjectKeys({ name: "Alice", age: 25 });
 
+console.log('-------------------');
 /*
 11. Sum Array Using do-while Loop
     - Define a function `sumWithDoWhile(numbers)` that uses a do-while loop
       to sum all numbers in the array.
     - Log the total.
 */
+
+console.log('EX. 11. ------------');
 
 function sumWithDoWhile(numbers) {
   let i = 0;
@@ -270,6 +280,7 @@ function sumWithDoWhile(numbers) {
 
 console.log(sumWithDoWhile([1, 2, 3, 4, 5]));
 
+console.log('-------------------');
 /*
 12. Remove Duplicates from an Array
     - Define a function `removeDuplicates(arr)` that loops through the array
@@ -278,6 +289,24 @@ console.log(sumWithDoWhile([1, 2, 3, 4, 5]));
     - Log the new array without duplicates.
 */
 
+console.log('EX. 12. ------------');
+
+
+function removeDuplicates(arr) {
+  const removed = [];
+  for(const element of arr) {
+  if(!removed.includes(element)){
+   removed.push(element);
+  }
+  }
+  return removed;
+}
+
+console.log(removeDuplicates([1,2,3,2,2,4,5,2,2,4,6]));
+
+
+console.log('-------------------');
+
 /*
 13. Calculate Factorial (For Loop)
     - Define a function `factorial(n)` that calculates n! (n factorial)
@@ -285,6 +314,9 @@ console.log(sumWithDoWhile([1, 2, 3, 4, 5]));
     - Log the result.
     - Example: factorial(5) -> 120
 */
+
+console.log('EX. 13. ------------');
+
 
 function factorial(n) {
   let product = 1; 
@@ -297,6 +329,8 @@ function factorial(n) {
 console.log(factorial(10));
 console.log(factorial(0));
 
+
+console.log('-------------------');
 /*
 14. String -> Array -> String
     - Define a function `reverseWords(sentence)` that splits the sentence
@@ -304,6 +338,9 @@ console.log(factorial(0));
       a string. Use loops or built-in methods as you like.
     - Log the reversed sentence.
 */
+
+console.log('EX. 14. ------------');
+
 
 function reverseWords(sentence) {
 const words = sentence.split(" ");
@@ -313,12 +350,18 @@ return joined; }
 
 console.log(reverseWords("i like to move it"));
 
+
+console.log('-------------------');
 /*
 15. Filter Words Longer Than X
     - Define a function `filterLongWords(words, minLength)` that uses a for loop
       to collect only the words that have a length >= minLength.
     - Log the resulting array.
 */
+
+
+console.log('EX. 15. ------------');
+
 
 function filterLongWords(words, minLength) {
   const resultArr = [];
@@ -332,12 +375,16 @@ function filterLongWords(words, minLength) {
 
 console.log(filterLongWords(["green","red","black","blue"], 5));
 
+console.log('-------------------');
+
 
 /*
 16. Log Array Elements with Their Indices
     - Define a function `logElementsWithIndex(arr)` that loops through the array
       and logs "Index: i, Value: arr[i]" for each element.
 */
+console.log('EX. 16. ------------');
+
 
 function logElementsWithIndex(arr) {
   
@@ -350,7 +397,7 @@ function logElementsWithIndex(arr) {
 
   logElementsWithIndex(["laptop", "desktop", "phone", "tablet"]);
 
-
+console.log('-------------------');
 
 /*
 17. Find the Smallest Number in an Array
@@ -358,6 +405,8 @@ function logElementsWithIndex(arr) {
       to find and return the smallest number.
     - Log the smallest number.
 */
+console.log('EX. 17. ------------');
+
 
 function findMin(numbers) {
 
@@ -374,12 +423,16 @@ let min = numbers[0];
 findMin([8, 3, 12, -2, 7]);
 
 
+console.log('-------------------');
+
 /*
 18. Count Occurrences of a Word in an Array
     - Define a function `countOccurrences(arr, word)` that loops through `arr`
       to count how many times `word` appears.
     - Log the count.
 */
+console.log('EX. 18. ------------');
+
 
 function countOccurences(arr, word) {
   let count = 0;
@@ -391,12 +444,16 @@ function countOccurences(arr, word) {
 
 console.log(countOccurences(["cat","dog","cat","bird","dog","cat","fish","dog"], "cat"));
 
+
+console.log('-------------------');
 /*
 19. Remove Falsy Values
     - Define a function `removeFalsyValues(arr)` that loops through an array
       and returns a new array without falsy values (false, 0, "", null, undefined, NaN).
     - Log the new array.
 */
+console.log('EX. 19. ------------');
+
 
 function removeFalsyValues(arr) {
   const removed = [];
@@ -411,7 +468,7 @@ function removeFalsyValues(arr) {
 
 removeFalsyValues(["dog", "cat", 0, "", NaN, "banana"]);
 
-
+console.log('-------------------');
 /*
 20. Sum of All Digits in a String
     - Define a function `sumDigits(str)` that loops through each character of `str`,
@@ -419,6 +476,8 @@ removeFalsyValues(["dog", "cat", 0, "", NaN, "banana"]);
     - Log the final sum.
     - Example: "abc123" -> 6
 */
+console.log('EX. 20. ------------');
+
 
 function sumDigits(str) {
   let sum = 0; 
@@ -434,13 +493,15 @@ function sumDigits(str) {
 
 sumDigits("yigit123245");
 
-
+console.log('-------------------');
 /*
 21. Average of Array Elements
     - Define a function `averageArray(numbers)` that uses a loop
       to calculate the average (sum / length).
     - Log the average.
 */
+console.log('EX. 21. ------------');
+
 
 function averageArray(numbers) {
   let sum = 0;
@@ -455,6 +516,7 @@ function averageArray(numbers) {
 
 console.log(averageArray([10, 20, 30, 40, 50, 60]));
 
+console.log('-------------------');
 
 /*
 22. Flatten a 2D Array (Nested Loops)
@@ -462,6 +524,22 @@ console.log(averageArray([10, 20, 30, 40, 50, 60]));
       (e.g., [[1,2],[3,4]]) and uses nested loops to create a new one-dimensional array.
     - Log the flattened array.
 */
+console.log('EX. 22. ------------');
+
+
+function flattenArray(twoDArray) {
+  const flattened = [];
+  for(const first of twoDArray) {
+    for(const second of first) {
+    flattened.push(second);
+    }
+  }
+return flattened;
+}
+
+console.log(flattenArray([[1, 2], [3, 4]]));
+
+console.log('-------------------');
 
 /*
 23. Find Words Containing a Letter
@@ -470,7 +548,24 @@ console.log(averageArray([10, 20, 30, 40, 50, 60]));
       the given letter.
     - Log the filtered array.
 */
+console.log('EX. 23. ------------');
 
+
+function findWordsWithLetter(words, letter) {
+  
+  const matched = [];
+  
+  for(const word of words){
+    if(word.includes(letter)){
+      matched.push(word);
+    }
+  }
+  return matched;
+}
+
+console.log(findWordsWithLetter(["car", "plane", "bike", "motorcycle"], "e"));
+
+console.log('-------------------');
 /*
 24. Push and Pop Operations
     - Define a function `pushPopExample(arr, itemToPush)` that:
@@ -480,7 +575,22 @@ console.log(averageArray([10, 20, 30, 40, 50, 60]));
       - logs the popped element
       - logs the final array
 */
+console.log('EX. 24. ------------');
 
+
+function pushPopExample(arr, itemToPush) {
+
+  arr.push(itemToPush);
+  console.log(arr);
+  const popped =  arr.pop();
+  console.log(popped);
+  console.log(arr);
+}
+
+
+pushPopExample([1,2,3,4], 5);
+ 
+console.log('-------------------');
 /*
 25. Push and Shift Operations
     - Define a function `manageQueue(queue, newPerson)` that:
@@ -490,7 +600,21 @@ console.log(averageArray([10, 20, 30, 40, 50, 60]));
       - logs the removed person
       - logs the final queue
 */
+console.log('EX. 25. ------------');
 
+
+function manageQueue(queue, newPerson) {
+  queue.push(newPerson);
+  console.log(queue);
+  const removed = queue.shift();
+  console.log(removed);
+  console.log(queue);
+}
+
+manageQueue(["A", "B", "C", "D"], "X");
+
+
+console.log('-------------------');
 /*
 26. To-Do List Application
   - Define a function `updateTodoList(todoList, startIndex, deleteCount, ...newTasks)`:
@@ -499,3 +623,17 @@ console.log(averageArray([10, 20, 30, 40, 50, 60]));
    - Inserts any new tasks at the end of the array.
    - Logs the updated list.
 */
+console.log('EX. 26. ------------');
+
+
+function updateTodoList(todoList, startIndex, deleteCount, ...newTasks) {
+  console.log(todoList);
+  todoList.splice(startIndex, deleteCount);
+  todoList.push(...newTasks);
+  console.log(todoList);
+}
+
+updateTodoList(["Frontend ögren", "HTML ögren", "CSS ögren", "JS ögren"], 1, 2, "React ögren", "Typescript ögren", "Tailwind ögren."
+ )
+
+ console.log('-------------------');
