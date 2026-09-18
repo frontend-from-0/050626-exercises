@@ -8,8 +8,8 @@ Focus: Variables, data types, arithmetic, strings, random numbers, template lite
 
 // 1. Declare variables firstNumber=5 and secondNumber=3 and log their sum.
 // CODE HERE
-let firstNumber = 5;
-let secondNumber = 3;
+const firstNumber = 5;
+const secondNumber = 3;
 console.log("Ex.1:", firstNumber + secondNumber);
 // 2. Declare variables learnerName and learnerAge. Log a greeting: "Hello! I am (learnerName) and I am (learnerAge) years old."
 // CODE HERE
