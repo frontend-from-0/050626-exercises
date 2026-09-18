@@ -106,7 +106,7 @@ console.log("Ex.18:", divisionQuotient, subtractionDifference);
 // CODE HERE
 const applicantFirstName = 'Yavuz';
 const applicantLastName = 'Alemdar';
-const applicantFullName = applicantFirstName +" " + applicantLastName;
+const applicantFullName = applicantFirstName + " " + applicantLastName;
 console.log("Ex.19:", applicantFullName)
 
 // 20. Declare productFactorSeven=7 and productFactorTwo=2. Log the product of productFactorSeven and productFactorTwo.
