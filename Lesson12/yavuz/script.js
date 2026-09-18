@@ -121,7 +121,7 @@ console.log("Ex.21:", Math.PI);
 // CODE HERE
 let demonstrationCounter = 0;
 demonstrationCounter++;
-console.log("Ex.22a:", demonstrationCounter);
+console.log(`Ex.22a: After using ++, the counter is ${demonstrationCounter}`);
 demonstrationCounter += 1;
 console.log("Ex.22b:", demonstrationCounter);
 demonstrationCounter= demonstrationCounter + 1;
