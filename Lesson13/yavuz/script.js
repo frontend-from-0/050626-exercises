@@ -468,11 +468,7 @@ containsNumber("abc123");
    - Log the padded string.
 */
 function padString(str, maxLength) {
-  if (str.length < maxLength) {
     console.log("Ex.26:", str.padEnd(maxLength, "*"));
-  } else {
-    console.log("Ex.26:", str);
-  }
 }
 
 padString("hi", 6);
