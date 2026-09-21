@@ -160,7 +160,7 @@ function filterNegativeNumbers(array) {
     );
     return;
   }
-  let newArray = [];
+  const newArray = [];
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] >= 0) {
@@ -186,7 +186,7 @@ function doubleValues(numbers) {
     );
     return;
   }
-  let doublearray = [];
+  const doubleArray = [];
   for (const number of numbers) {
     if (typeof number !== 'number') {
       console.log(
@@ -194,9 +194,9 @@ function doubleValues(numbers) {
       );
       return;
     }
-    doublearray.push(number * 2);
+    doubleArray.push(number * 2);
   }
-  console.log(doublearray);
+  console.log(doubleArray);
 }
 doubleValues(exampleArray);
 doubleValues([1, 2, 3, '4']);
@@ -207,6 +207,12 @@ doubleValues([1, 2, 3, '4']);
      to log each character in the string on a separate line.
 */
 function printCharacters(str) {
+  if (typeof str !== 'string') {
+    console.log(
+      'Incorrect input type in the printCharacters function. Expected input type is string.',
+    );
+    return;
+  }
   for (const char of str) {
     console.log(char);
   }
@@ -223,9 +229,17 @@ printCharacters('abc');
    - Example: {a: 10, b: 20, c: 5} -> 35
 */
 function sumObjectValues(obj) {
+  if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+    console.log(
+      'Incorrect input type in the sumObjectValues function. Expected input type is object.',
+    );
+    return;
+  }
   let sum = 0;
   for (const key in obj) {
-    sum += obj[key];
+    if (typeof obj[key] === 'number') {
+      sum += obj[key];
+    }
   }
   console.log(sum);
 }
@@ -240,6 +254,12 @@ sumObjectValues({ a: 10, b: 20, c: 5 });
     - Example: { name: "Alice", age: 25 } -> logs "name", then "age"
 */
 function printObjectKeys(obj) {
+  if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) {
+    console.log(
+      'Incorrect input type in the printObjectKeys function. Expected input type is object.',
+    );
+    return;
+  }
   for (const key in obj) {
     console.log(key);
   }
@@ -255,6 +275,12 @@ printObjectKeys({ name: 'Alice', age: 25 });
     - Log the total.
 */
 function sumWithDoWhile(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    console.log(
+      'Incorrect input type in the sumWithDoWhile function. Expected input type is a non-empty array.',
+    );
+    return;
+  }
   let sum = 0;
   let i = 0;
   do {
@@ -275,6 +301,12 @@ sumWithDoWhile([1, 2, 3, 4, 5]);
     - Log the new array without duplicates.
 */
 function removeDuplicates(arr) {
+  if (!Array.isArray(arr)) {
+    console.log(
+      'Incorrect input type in the removeDuplicates function. Expected input type is array.',
+    );
+    return;
+  }
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     if (!result.includes(arr[i])) {
@@ -295,6 +327,12 @@ removeDuplicates([1, 2, 2, 3, 4, 4, 5]);
     - Example: factorial(5) -> 120
 */
 function factorial(n) {
+  if (typeof n !== 'number' || !Number.isInteger(n) || n < 0) {
+    console.log(
+      'Incorrect input type in the factorial function. Expected input type is a non-negative integer.',
+    );
+    return;
+  }
   let result = 1;
   for (let i = 2; i <= n; i++) {
     result *= i;
@@ -313,6 +351,12 @@ factorial(5);
     - Log the reversed sentence.
 */
 function reverseWords(sentence) {
+  if (typeof sentence !== 'string') {
+    console.log(
+      'Incorrect input type in the reverseWords function. Expected input type is string.',
+    );
+    return;
+  }
   const words = sentence.split(' ');
   const reversed = [];
   for (let i = words.length - 1; i >= 0; i--) {
@@ -331,6 +375,12 @@ reverseWords('the quick brown fox');
     - Log the resulting array.
 */
 function filterLongWords(words, minLength) {
+  if (!Array.isArray(words) || typeof minLength !== 'number') {
+    console.log(
+      'Incorrect input type in the filterLongWords function. Expected input types are array and number.',
+    );
+    return;
+  }
   const result = [];
   for (let i = 0; i < words.length; i++) {
     if (words[i].length >= minLength) {
@@ -349,6 +399,12 @@ filterLongWords(['cat', 'elephant', 'dog', 'butterfly'], 4);
       and logs "Index: i, Value: arr[i]" for each element.
 */
 function logElementsWithIndex(arr) {
+  if (!Array.isArray(arr)) {
+    console.log(
+      'Incorrect input type in the logElementsWithIndex function. Expected input type is array.',
+    );
+    return;
+  }
   for (let i = 0; i < arr.length; i++) {
     console.log(`Index: ${i}, Value: ${arr[i]}`);
   }
@@ -364,6 +420,12 @@ logElementsWithIndex(['a', 'b', 'c']);
     - Log the smallest number.
 */
 function findMin(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    console.log(
+      'Incorrect input type in the findMin function. Expected input type is a non-empty array.',
+    );
+    return;
+  }
   let min = numbers[0];
   for (let i = 1; i < numbers.length; i++) {
     if (numbers[i] < min) {
@@ -383,6 +445,12 @@ findMin([5, 3, 8, 1, 9]);
     - Log the count.
 */
 function countOccurrences(arr, word) {
+  if (!Array.isArray(arr) || typeof word !== 'string') {
+    console.log(
+      'Incorrect input type in the countOccurrences function. Expected input types are array and string.',
+    );
+    return;
+  }
   let count = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === word) {
@@ -402,6 +470,12 @@ countOccurrences(['apple', 'banana', 'apple', 'cherry', 'apple'], 'apple');
     - Log the new array.
 */
 function removeFalsyValues(arr) {
+  if (!Array.isArray(arr)) {
+    console.log(
+      'Incorrect input type in the removeFalsyValues function. Expected input type is array.',
+    );
+    return;
+  }
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i]) {
@@ -422,6 +496,12 @@ removeFalsyValues([0, 'hello', '', 1, false, 2, null, 3, undefined, NaN]);
     - Example: "abc123" -> 6
 */
 function sumDigits(str) {
+  if (typeof str !== 'string') {
+    console.log(
+      'Incorrect input type in the sumDigits function. Expected input type is string.',
+    );
+    return;
+  }
   let sum = 0;
   for (const char of str) {
     if (!isNaN(char) && char !== ' ') {
@@ -441,6 +521,12 @@ sumDigits('abc123');
     - Log the average.
 */
 function averageArray(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    console.log(
+      'Incorrect input type in the averageArray function. Expected input type is a non-empty array.',
+    );
+    return;
+  }
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
     sum += numbers[i];
@@ -458,8 +544,20 @@ averageArray([1, 2, 3, 4, 5]);
     - Log the flattened array.
 */
 function flattenArray(twoDArray) {
+  if (!Array.isArray(twoDArray)) {
+    console.log(
+      'Incorrect input type in the flattenArray function. Expected input type is array of arrays.',
+    );
+    return;
+  }
   const result = [];
   for (let i = 0; i < twoDArray.length; i++) {
+    if (!Array.isArray(twoDArray[i])) {
+      console.log(
+        'Incorrect input type in the flattenArray function. Expected input type is array of arrays.',
+      );
+      return;
+    }
     for (let j = 0; j < twoDArray[i].length; j++) {
       result.push(twoDArray[i][j]);
     }
@@ -481,6 +579,12 @@ flattenArray([
     - Log the filtered array.
 */
 function findWordsWithLetter(words, letter) {
+  if (!Array.isArray(words) || typeof letter !== 'string') {
+    console.log(
+      'Incorrect input type in the findWordsWithLetter function. Expected input types are array and string.',
+    );
+    return;
+  }
   const result = [];
   for (let i = 0; i < words.length; i++) {
     if (words[i].includes(letter)) {
@@ -503,6 +607,12 @@ findWordsWithLetter(['cat', 'dog', 'bird', 'fish'], 'i');
       - logs the final array
 */
 function pushPopExample(arr, itemToPush) {
+  if (!Array.isArray(arr)) {
+    console.log(
+      'Incorrect input type in the pushPopExample function. Expected input type is array.',
+    );
+    return;
+  }
   arr.push(itemToPush);
   console.log(arr);
   const popped = arr.pop();
@@ -523,6 +633,12 @@ pushPopExample([1, 2, 3], 4);
       - logs the final queue
 */
 function manageQueue(queue, newPerson) {
+  if (!Array.isArray(queue)) {
+    console.log(
+      'Incorrect input type in the manageQueue function. Expected input type is array.',
+    );
+    return;
+  }
   queue.push(newPerson);
   console.log(queue);
   const removed = queue.shift();
@@ -542,6 +658,16 @@ manageQueue(['Alice', 'Bob'], 'Charlie');
    - Logs the updated list.
 */
 function updateTodoList(todoList, startIndex, deleteCount, ...newTasks) {
+  if (
+    !Array.isArray(todoList) ||
+    typeof startIndex !== 'number' ||
+    typeof deleteCount !== 'number'
+  ) {
+    console.log(
+      'Incorrect input type in the updateTodoList function. Expected input types are array, number and number.',
+    );
+    return;
+  }
   console.log(todoList);
   todoList.splice(startIndex, deleteCount);
   todoList.push(...newTasks);
