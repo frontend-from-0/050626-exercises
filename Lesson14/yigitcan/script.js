@@ -16,15 +16,15 @@ function sumArray(numbers) {
 
     // numbers[i] - square bracket notation
   }
-  return sum;
+  console.log(sum);
 }
 
 const exampleArray = [1, 2, 3, 4, 5];
 const exampleArray2 = Array(1, 2, 3, 4, 5, 5);
 console.log('EX. 1. ------------');
-console.log(sumArray(exampleArray));
-console.log(sumArray(exampleArray2));
-console.log(sumArray());
+sumArray(exampleArray);
+sumArray(exampleArray2);
+sumArray();
 
 /*
 2. Find Maximum Number in an Array
@@ -275,10 +275,10 @@ function sumWithDoWhile(numbers) {
     sum += numbers[i];
     i++;
   } while (i<numbers.length);
-  return sum;
+   console.log(sum);
 }
 
-console.log(sumWithDoWhile([1, 2, 3, 4, 5]));
+sumWithDoWhile([1, 2, 3, 4, 5]);
 
 console.log('-------------------');
 /*
@@ -299,10 +299,10 @@ function removeDuplicates(arr) {
    removed.push(element);
   }
   }
-  return removed;
+  console.log(removed);
 }
 
-console.log(removeDuplicates([1,2,3,2,2,4,5,2,2,4,6]));
+removeDuplicates([1,2,3,2,2,4,5,2,2,4,6]);
 
 
 console.log('-------------------');
@@ -323,11 +323,11 @@ function factorial(n) {
   for(let i=n; i >= 1; i-- ) {
     product *= i;
   }
-  return product;
+  console.log(product);
 }
 
-console.log(factorial(10));
-console.log(factorial(0));
+factorial(10);
+factorial(0);
 
 
 console.log('-------------------');
@@ -346,9 +346,9 @@ function reverseWords(sentence) {
 const words = sentence.split(" ");
   const reversed = words.reverse();
   const joined = reversed.join(" ");
-return joined; }
+console.log(joined); }
 
-console.log(reverseWords("i like to move it"));
+reverseWords("i like to move it");
 
 
 console.log('-------------------');
@@ -370,10 +370,10 @@ function filterLongWords(words, minLength) {
       resultArr.push(words[i]);
     }
   }
-  return resultArr;
+ console.log(resultArr);
 }
 
-console.log(filterLongWords(["green","red","black","blue"], 5));
+filterLongWords(["green","red","black","blue"], 5);
 
 console.log('-------------------');
 
@@ -439,10 +439,10 @@ function countOccurences(arr, word) {
   for(let i = 0; i < arr.length; i++) {
     if(arr[i]=== word) {count++}
   }
-  return count;
+  console.log(count);
 }
 
-console.log(countOccurences(["cat","dog","cat","bird","dog","cat","fish","dog"], "cat"));
+countOccurences(["cat","dog","cat","bird","dog","cat","fish","dog"], "cat");
 
 
 console.log('-------------------');
@@ -510,11 +510,11 @@ function averageArray(numbers) {
       
   }
    let average = sum / numbers.length; 
-  return average;
+  console.log(average);
 }
 
 
-console.log(averageArray([10, 20, 30, 40, 50, 60]));
+averageArray([10, 20, 30, 40, 50, 60]);
 
 console.log('-------------------');
 
@@ -534,10 +534,10 @@ function flattenArray(twoDArray) {
     flattened.push(second);
     }
   }
-return flattened;
+console.log(flattened);
 }
 
-console.log(flattenArray([[1, 2], [3, 4]]));
+flattenArray([[1, 2], [3, 4]]);
 
 console.log('-------------------');
 
@@ -560,10 +560,10 @@ function findWordsWithLetter(words, letter) {
       matched.push(word);
     }
   }
-  return matched;
+  console.log(matched);
 }
 
-console.log(findWordsWithLetter(["car", "plane", "bike", "motorcycle"], "e"));
+findWordsWithLetter(["car", "plane", "bike", "motorcycle"], "e");
 
 console.log('-------------------');
 /*
