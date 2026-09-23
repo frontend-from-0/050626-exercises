@@ -231,7 +231,7 @@ console.log('EX. 9. ------------');
 
 function sumObjectValues(obj) {
   let sum = 0;
-  for (num in obj) {
+  for (const num in obj) {
     sum += obj[num];
   }
   console.log(sum); 
