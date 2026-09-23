@@ -186,7 +186,7 @@ function doubleValues(numbers) {
     );
     return;
   }
-  let doublearray = [];
+  const doubleArray = [];
   for (const number of numbers) {
     if (typeof number !== 'number') {
       console.log(
