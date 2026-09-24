@@ -208,6 +208,13 @@ Function: updateContact(name, newPhone, newEmail)
 - Logs "Contact updated successfully." if found.
 - Otherwise, logs: "No contact found with the name: <name>"
 */
+/**
+ * Updates the phone and email of the contact matching `name`.
+ * @param {string} name - Name of the contact to find (case-insensitive).
+ * @param {string} newPhone - Replacement phone number.
+ * @param {string} newEmail - Replacement email address.
+ * @param {object[]} contacts - The contact list to update.
+ */
 function updateContact(name, newPhone, newEmail, contacts) {
   if (!Array.isArray(contacts)) {
     logWithEmptySpace(
@@ -227,12 +234,19 @@ function updateContact(name, newPhone, newEmail, contacts) {
     return;
   }
 
+  if (name.trim() === '' || newPhone.trim() === '' || newEmail.trim() === '') {
+    logWithEmptySpace(
+      'Invalid input, name, newPhone, and newEmail cannot be empty.',
+    );
+    return;
+  }
+
   console.log(`Updating contact ${name}...`);
 
   for (const contact of contacts) {
     if (name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()) {
-      contact.phone = newPhone;
-      contact.email = newEmail;
+      contact.phone = newPhone.trim();
+      contact.email = newEmail.trim();
       logWithEmptySpace('Contact updated successfully.');
       return;
     }
@@ -245,6 +259,7 @@ updateContact('John', '0500 000 00 00', 'john.new@gmail.com', personalContacts);
 updateContact('Nobody', '0500 000 00 00', 'nobody@gmail.com', personalContacts);
 updateContact('John', undefined, 'john.new@gmail.com', personalContacts);
 updateContact('John', '0500 000 00 00', 'john.new@gmail.com');
+updateContact('John', '   ', 'john.new@gmail.com', personalContacts);
 
 displayAllContacts(personalContacts);
 
@@ -259,6 +274,11 @@ Function: removeContact(name)
 - Logs "Contact removed successfully." if found.
 - Otherwise, logs: "No contact found with the name: <name>"
 */
+/**
+ * Removes the contact matching `name` from `contacts`, if present.
+ * @param {string} name - Name of the contact to remove (case-insensitive).
+ * @param {object[]} contacts - The contact list to remove from.
+ */
 function removeContact(name, contacts) {
   if (!Array.isArray(contacts)) {
     logWithEmptySpace(
@@ -271,6 +291,11 @@ function removeContact(name, contacts) {
     logWithEmptySpace(
       'Incorrect input type, expected name input in string format.',
     );
+    return;
+  }
+
+  if (name.trim() === '') {
+    logWithEmptySpace('Invalid input, name cannot be empty.');
     return;
   }
 
@@ -293,6 +318,7 @@ removeContact('Yigit', personalContacts);
 removeContact('Nobody', personalContacts);
 removeContact(false, personalContacts);
 removeContact('Yigit');
+removeContact('   ', personalContacts);
 
 displayAllContacts(personalContacts);
 
@@ -330,7 +356,11 @@ displayAllContacts(demoContacts);
    - e.g., find a contact by phone number or email.
 */
 
-// 1. Partial Name Search
+/**
+ * Finds contacts whose name contains `partialName` (case-insensitive).
+ * @param {string} partialName - Substring to search for in each contact's name.
+ * @param {object[]} contacts - The contact list to search.
+ */
 function searchContactsByPartialName(partialName, contacts) {
   if (!Array.isArray(contacts)) {
     logWithEmptySpace(
@@ -343,6 +373,11 @@ function searchContactsByPartialName(partialName, contacts) {
     logWithEmptySpace(
       'Incorrect input type, expected partialName input in string format.',
     );
+    return;
+  }
+
+  if (partialName.trim() === '') {
+    logWithEmptySpace('Invalid input, partialName cannot be empty.');
     return;
   }
 
@@ -359,7 +394,10 @@ function searchContactsByPartialName(partialName, contacts) {
   displayAllContacts(matches);
 }
 
-// 2. Sort Contacts Alphabetically
+/**
+ * Sorts `contacts` alphabetically by name, in place.
+ * @param {object[]} contacts - The contact list to sort.
+ */
 function sortContactsByName(contacts) {
   if (!Array.isArray(contacts)) {
     logWithEmptySpace(
@@ -372,7 +410,12 @@ function sortContactsByName(contacts) {
   logWithEmptySpace('Contacts sorted alphabetically by name.');
 }
 
-// 3. Search by Multiple Fields (phone or email)
+/**
+ * Finds a contact whose phone or email matches `query` (email match is
+ * case-insensitive, phone match is exact).
+ * @param {string} query - Phone number or email address to search for.
+ * @param {object[]} contacts - The contact list to search.
+ */
 function findContactByPhoneOrEmail(query, contacts) {
   if (!Array.isArray(contacts)) {
     logWithEmptySpace(
@@ -385,6 +428,11 @@ function findContactByPhoneOrEmail(query, contacts) {
     logWithEmptySpace(
       'Incorrect input type, expected query input in string format.',
     );
+    return;
+  }
+
+  if (query.trim() === '') {
+    logWithEmptySpace('Invalid input, query cannot be empty.');
     return;
   }
 
@@ -410,3 +458,4 @@ sortContactsByName(workContacts);
 displayAllContacts(workContacts);
 findContactByPhoneOrEmail('asya@gmail.com', workContacts);
 findContactByPhoneOrEmail('0000000000', workContacts);
+searchContactsByPartialName('   ', workContacts);
