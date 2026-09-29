@@ -173,10 +173,11 @@ console.log('Ex. 24b.', ++valueForPrefixIncrement);
 
 // 25. Declare valueForPostfixIncrement=8. Increment it using the postfix ++ operator and log both the expression result and the variable after the update, as appropriate for postfix ++.
 let valueForPostfixIncrement = 8;
-console.log('Ex. 25a.' , valueForPostfixIncrement);
+console.log('Ex. 25a. Value before postfix increment:' , valueForPostfixIncrement);
 
-valueForPostfixIncrement++;
-console.log('Ex. 25b.' , valueForPostfixIncrement);
+console.log('Ex. 25b. Result of postfix increment (valueForPostfixIncrement++):', valueForPostfixIncrement++);
+
+console.log('Ex. 25c. Value after postfix increment:', valueForPostfixIncrement);
 
 
 // 26. Declare valueBeforeDoubleStep=-3. Increment it by 1 using prefix ++, then multiply the result by 2 and log the final value.
