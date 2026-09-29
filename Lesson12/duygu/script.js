@@ -150,13 +150,13 @@ console.log('Ex. 21.', Math.PI);
 // demonstrationCounter++, demonstrationCounter+=1, demonstrationCounter=demonstrationCounter+1) and log the result each time.
 let demonstrationCounter = 0;
 demonstrationCounter++;
-console.log('Ex. 22a.', demonstrationCounter);
+console.log("Ex. 22a. Value after postfix increment (++):", demonstrationCounter);
 
 demonstrationCounter+=1;
-console.log('Ex. 22a.', demonstrationCounter);
+console.log("Ex. 22b. Value after += 1:", demonstrationCounter);
 
 demonstrationCounter = demonstrationCounter+1;
-console.log('Ex. 22a.', demonstrationCounter);
+console.log("Ex. 22c. Value after addition and reassignment:", demonstrationCounter);
 
 
 // 23. Declare baselineCelsiusTemp=20. Increase it by 5 and log the result.
