@@ -107,8 +107,8 @@ console.log('Ex. 15. Result is:', gameScorePoints);
 
 // 16. Declare residentName="Alice", residentAge=30, residentCity="Paris". Log "Alice (30) lives in Paris" using template literals.
 const residentName ="Alice";
-residentAge = 30;
-residentCity = "Paris";
+const residentAge = 30;
+const residentCity = "Paris";
 console.log(`Ex. 16. ${residentName} (${residentAge}) lives in ${residentCity}.`);
 
 
