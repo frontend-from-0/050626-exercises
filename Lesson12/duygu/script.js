@@ -137,8 +137,8 @@ console.log(`Ex. 19. ${applicantFirstName} ${applicantLastName}`);
 
 // 20. Declare productFactorSeven=7 and productFactorTwo=2. Log the product of productFactorSeven and productFactorTwo.
 //In programming and mathematics, the word "product" means the result of multiplying two or more numbers together (çarpım).
-productFactorSeven = 7;
-productFactorTwo = 2;
+const productFactorSeven = 7;
+const productFactorTwo = 2;
 console.log('Ex. 20.', productFactorSeven  * productFactorTwo);
 
 
