@@ -121,9 +121,9 @@ console.log('Ex. 17. Result is:', bundlePartOne + bundlePartTwo + bundlePartThre
 
 // 18. Declare divisionDividendAmount=10 and divisionDivisorAmount=3. Log the quotient as divisionQuotient and the 
 // subtraction difference (divisionDividendAmount - divisionDivisorAmount) as subtractionDifference.
-divisionDividendAmount = 10;
-divisionDivisorAmount = 3;
-divisionQuotient = divisionDividendAmount /divisionDivisorAmount;
+const divisionDividendAmount = 10;
+const divisionDivisorAmount = 3;
+const divisionQuotient = divisionDividendAmount /divisionDivisorAmount;
 console.log('Ex. 18a.', divisionQuotient);
 console.log(`Ex. 18b. subtractionDifference is:`, divisionDividendAmount - divisionDivisorAmount );
 //Note for Anna: I was not sure which style you want us to log this exercise results. That's why i used two different ways fyi.
