@@ -167,8 +167,7 @@ console.log('Ex. 23.', baselineCelsiusTemp);
 
 // 24. Declare valueForPrefixIncrement=6. Increment it using the prefix ++ operator and log both the expression result and the variable after the update, as appropriate for prefix ++.
 let valueForPrefixIncrement = 6;
-console.log('Ex. 24a.', valueForPrefixIncrement);
-console.log('Ex. 24b.', ++valueForPrefixIncrement);
+console.log("Ex. 24a. Value before prefix increment:", valueForPrefixIncrement); console.log("Ex. 24b. Result of prefix increment (++valueForPrefixIncrement):", ++valueForPrefixIncrement);
 
 
 // 25. Declare valueForPostfixIncrement=8. Increment it using the postfix ++ operator and log both the expression result and the variable after the update, as appropriate for postfix ++.
