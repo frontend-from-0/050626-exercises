@@ -182,7 +182,7 @@ let  valueBeforeDoubleStep=-3;
 
 // 27. Declare prefixBaseValue=2 and addedNeighborValue=3. Increment prefixBaseValue using the prefix ++ operator, then add addedNeighborValue to the result and log it.
 let prefixBaseValue=2;
-let addedNeighborValue=3;
+const addedNeighborValue=3;
 
 ++prefixBaseValue;
 
