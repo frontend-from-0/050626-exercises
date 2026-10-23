@@ -9,7 +9,7 @@
  */
 
 const dateInput = document.getElementById('date');
-const timeButtons = document.querySelectorAll('.slot');
+const timeRadios = document.querySelectorAll('input[name="time"]');
 const dateSpan = document.getElementById('selected-date');
 const timeSpan = document.getElementById('selected-time');
 const confirmButton = document.getElementById('confirm');
@@ -36,12 +36,16 @@ const data = {
 };
 
 // Earliest selectable date is tomorrow (built from local time, not UTC)
-const tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate() + 1);
-const year = tomorrow.getFullYear();
-const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
-const day = String(tomorrow.getDate()).padStart(2, '0');
-dateInput.min = `${year}-${month}-${day}`;
+function getTomorrowDateString() {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const year = tomorrow.getFullYear();
+  const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+  const day = String(tomorrow.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+dateInput.min = getTomorrowDateString();
 
 /* 
 Select the date, date will be written on the right side of the screen
@@ -78,15 +82,15 @@ dateInput.addEventListener('change', function () {
   allowSubmit();
 });
 
-// If you had selected timeSlotButtons using document.getElementsByClassName('slot') then you'd have to copy them first, before being able to run forEach on them!!!!
-// const copy = [...timeSlotButtons]; copy.forEach....
+// If you had selected the radios using document.getElementsByClassName(...) then you'd have to copy them first, before being able to run forEach on them!!!!
+// const copy = [...timeRadios]; copy.forEach....
 
-timeButtons.forEach((button) => {
-
-  button.addEventListener('click', function () {
-    if (button.textContent) {
-      timeSpan.textContent = button.textContent;
-      data.time = button.textContent;
+timeRadios.forEach((radio) => {
+  // 'change' fires on the radio that becomes selected
+  radio.addEventListener('change', function () {
+    if (radio.checked) {
+      timeSpan.textContent = radio.value;
+      data.time = radio.value;
     } else {
       timeSpan.textContent = '-';
       data.time = null;
@@ -94,7 +98,6 @@ timeButtons.forEach((button) => {
 
     allowSubmit();
   });
-
 });
 
 // 'change' fires when the user leaves the field (stops filling it)
