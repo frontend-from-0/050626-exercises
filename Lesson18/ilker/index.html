@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Book an Appointment</h1>
+      </header>
+
+      <form class="booking" id="booking-form">
+        <section class="calendar">
+          <label for="date">Select a date</label>
+          <input type="date" id="date" />
+          <h2 id="timeslots-heading">Available Time Slots</h2>
+          <fieldset class="timeslots" aria-labelledby="timeslots-heading">
+            <legend class="hidden">Choose a time slot</legend>
+            <label class="slot">
+              <input type="radio" name="time" value="09:00" />
+              <span>09:00</span>
+            </label>
+            <label class="slot">
+              <input type="radio" name="time" value="10:30" />
+              <span>10:30</span>
+            </label>
+            <label class="slot">
+              <input type="radio" name="time" value="13:00" />
+              <span>13:00</span>
+            </label>
+            <label class="slot">
+              <input type="radio" name="time" value="14:30" />
+              <span>14:30</span>
+            </label>
+            <label class="slot">
+              <input type="radio" name="time" value="16:00" />
+              <span>16:00</span>
+            </label>
+          </fieldset>
+
+          <label for="name">Your name</label>
+          <input type="text" id="name" placeholder="Full name" />
+
+          <label for="email">Your email</label>
+          <input type="email" id="email" placeholder="name@example.com" />
+        </section>
+
+        <aside class="summary">
+          <h2>Your Appointment</h2>
+          <p>Date: <span id="selected-date">-</span></p>
+          <p>Time: <span id="selected-time">-</span></p>
+          <p>Name: <span id="selected-name">-</span></p>
+          <p>Email: <span id="selected-email">-</span></p>
+          <button id="confirm" disabled>Confirm Booking</button>
+        </aside>
+      </form>
+
+      <div class="confirmation hidden" id="confirmation-msg">
+        <div class="confirmation-icon" aria-hidden="true">&#10003;</div>
+        <h2>Your booking is confirmed!</h2>
+        <p class="confirmation-text">We look forward to seeing you. Here are your booking details:</p>
+        <dl class="confirmation-details">
+          <div>
+            <dt>Name</dt>
+            <dd id="confirmed-name"></dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd id="confirmed-email"></dd>
+          </div>
+          <div>
+            <dt>Date</dt>
+            <dd id="confirmed-date"></dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd id="confirmed-time"></dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hidden" id="error-msg">
+        <h2>An error occured! Please try again. </h2>
+      </div>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
