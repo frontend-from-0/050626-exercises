@@ -81,8 +81,16 @@ function validateCardNumber() {
 
 function validateExpDate() {
   const expTrimmedValue = expDateInput.value.trim();
+  let isExpired = false;
 
-  if (!expPattern.test(expTrimmedValue)) {
+  if (expPattern.test(expTrimmedValue)) {
+    const [month, year] = expTrimmedValue.split('/').map(Number);
+    // The first day of the month after the expiry month
+    const expiryEnd = new Date(2000 + year, month, 1);
+    isExpired = expiryEnd <= new Date();
+  }
+
+  if (!expPattern.test(expTrimmedValue) || isExpired) {
     expDateErrorMsg.classList.remove('hidden');
     isFormValid = false;
   } else {
