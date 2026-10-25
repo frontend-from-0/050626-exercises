@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <form novalidate id="checkoutForm" method="GET">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="email@example.com"
+            name="email"
+          />
+          <p id="emailError" class="input-error hidden">
+            Please provide a valid email address.
+          </p>
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone</label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="555 123 4567"
+            name="phoneNumber"
+          />
+          <p id="phoneError" class="input-error hidden">
+            Please provide a valid phone number.
+          </p>
+        </div>
+        <div class="input-group">
+          <label for="firstname">First Name</label>
+          <input
+            id="firstname"
+            type="text"
+            placeholder="Sophia"
+            name="firstname"
+          />
+          <p id="firstNameError" class="input-error hidden"></p>
+        </div>
+        <div class="input-group">
+          <label for="lastname">Last Name</label>
+          <input
+            id="lastname"
+            type="text"
+            placeholder="Clark"
+            name="lastname"
+          />
+          <p id="lastNameError" class="input-error hidden"></p>
+        </div>
+
+        <div class="input-group">
+          <label for="cardnumber">Card Number</label>
+          <input
+            id="cardnumber"
+            type="text"
+            placeholder="1234 5678 9101 1121"
+            name="cardnumber"
+          />
+          <p id="cardNumError" class="input-error hidden"></p>
+        </div>
+        <div class="input-group">
+          <label for="expDate">Expiration Date</label>
+          <input id="expDate" type="text" placeholder="MMYY" name="expDate" />
+          <p id="cardExpiryError" class="input-error hidden"></p>
+        </div>
+        <div class="input-group">
+          <label for="cvv">CVV</label>
+          <input id="cvv" type="text" placeholder="123" name="cvv" />
+          <p id="cardCvvError" class="input-error hidden"></p>
+        </div>
+        <div class="btn-group">
+        <button type="submit" class="btn">Place Order</button>
+        <button type="reset" class="btn">Reset</button></div>
+      </form>
+      <div class="hidden success-container" id="success">
+        <p class="success-title" >Your form submitted successfully.</p>
+        <div class="details-container">
+        <p><span class="details-label">First Name</span>: <span id="detailsFN"></span></p>
+        <p><span class="details-label">Last Name</span>:<span id="detailsLN"></span></p>
+        <p><span class="details-label">Phone Number</span>:<span id="detailsPhone"></span></p>
+        <p><span class="details-label">Email Address</span>: <span id="detailsEmail"></span></p>
+        <p><span class="details-label">Card Number</span>:<span id="detailsCN"></span></p>
+        <p><span class="details-label">Expiry Date</span>: <span id="detailsED"></span></p>
+        <p><span class="details-label">CVV</span>:<span id="detailsCvv"></span></p>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
