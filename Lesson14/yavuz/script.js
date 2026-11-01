@@ -160,7 +160,7 @@ function filterNegativeNumbers(array) {
     );
     return;
   }
-  let newArray = [];
+  const newArray = [];
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] >= 0) {
