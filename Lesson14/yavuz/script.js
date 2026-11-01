@@ -208,7 +208,7 @@ doubleValues([1, 2, 3, '4']);
 */
 function printCharacters(str) {
   for (const char  of str) {
-    console.log(char)
+    console.log(char);
   }
 }
 printCharacters('hello');
