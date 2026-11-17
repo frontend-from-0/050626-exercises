@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Update user</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="button">Back to users</a>
+    </nav>
+    <main>
+      <form method="POST" id="updateUserForm" aria-describedby="statusMessage">
+        <label for="firstName">First name</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          autocomplete="given-name"
+          required
+          disabled
+        />
+
+        <label for="lastName">Last name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          autocomplete="family-name"
+          required
+          disabled
+        />
+
+        <button type="submit" class="button button--success" disabled>
+          Update user
+        </button>
+      </form>
+      <div>
+        <p class="hidden" id="statusMessage" role="status" aria-live="polite"></p>
+      </div>
+    </main>
+
+    <script src="./update.js"></script>
+  </body>
+</html>
