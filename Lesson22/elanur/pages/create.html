@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create user</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="button">Back to users</a>
+    </nav>
+    <main>
+      <form method="POST" id="createUserForm" aria-describedby="statusMessage">
+        <label for="firstName">First name</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          autocomplete="given-name"
+          required
+        />
+
+        <label for="lastName">Last name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          autocomplete="family-name"
+          required
+        />
+
+        <button type="submit" class="button button--success">Create user</button>
+      </form>
+      <div>
+        <p class="hidden" id="statusMessage" role="status" aria-live="polite"></p>
+      </div>
+    </main>
+
+    <script src="./create.js"></script>
+  </body>
+</html>
