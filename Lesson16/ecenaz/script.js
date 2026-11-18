@@ -92,12 +92,13 @@ class ShoppingCart {
       if (currentItem.name === name) {
         this.#items.splice(i, 1);
         console.log(` Name: '${name}' Removed successfully. `);
-        return currentItem;
+       
       }
 
       if (this.#items.length === 0) {
         console.log("Your cart is now empty.");
       }
+       return currentItem;
     }
     console.warn(`Item not found: ${name}`);
   }
@@ -112,7 +113,7 @@ class ShoppingCart {
       total += currentItem.quantity * currentItem.price.amount;
 
     }
-    console.log(`Total cost of this cart is: ${total}`);
+   
     return total;
   }
 
@@ -128,7 +129,7 @@ class ShoppingCart {
 
     if (discountPercent === undefined) {
       console.warn(`Invalid discount code: ${code}`);
-      return this.getTotal();
+      return total;
     }
 
     const total = this.getTotal();
@@ -138,8 +139,8 @@ class ShoppingCart {
     const discountedTotal = total - discountAmount;
 
     console.log(`Discount code ${code} applied: ${discountPercent}% off`);
-    console.log(`You saved: ${discountAmount}`);
-    console.log(`New total: ${discountedTotal}`);
+    console.log(`You saved: ${discountAmount} USD`);
+    console.log(`New total: ${discountedTotal} USD`);
     return discountedTotal;
   }
 
