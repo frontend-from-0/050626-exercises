@@ -83,7 +83,7 @@ function decrementProduct(productName) {
   
 }
 
-function removeFromCard(productName) {
+function removeFromCart(productName) {
   products[productName].quantity = 0;
   products[productName].cartDiv.classList.add('hidden');
   updateTotal();
@@ -92,11 +92,8 @@ function removeFromCard(productName) {
 
 function addToCart(productName) {
   products[productName].cartDiv.classList.remove('hidden');
-  products[productName].decrementButton.removeAttribute('disabled');
-  products[productName].quantity++;
-  products[productName].quantitySpan.textContent = products[productName].quantity;
+  incrementProduct(productName);
   updateTotal();
-  saveCart();
 }
 
 function updateTotal() {
