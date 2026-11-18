@@ -89,7 +89,7 @@ function decrementProduct(productName) {
   }
 }
 
-function removeFromCard(productName) {
+function removeFromCart(productName) {
   products[productName].quantity = 0;
   products[productName].cartDiv.classList.add('hidden');
   updateTotal();
