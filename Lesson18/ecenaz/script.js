@@ -133,7 +133,7 @@ function allowSubmit() {
 formElement.addEventListener('submit', function (event) {
   event.preventDefault();
   console.log(event);
-  if (data.date && data.time) {
+  if (data.name && data.email && data.date && data.time) {
     formElement.classList.add('hidden');
     confirmation.classList.remove('hidden');
   } else {
