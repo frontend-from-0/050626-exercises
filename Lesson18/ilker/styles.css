@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.booking {
+  display: flex;
+  gap: 2rem;
+}
+
+.calendar {
+  flex: 2;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.calendar label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+#date,
+#name,
+#email {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+fieldset {
+  border: none;
+}
+
+.timeslots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calendar .slot {
+  position: relative;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.slot input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.slot span {
+  display: block;
+  padding: 1rem;
+  background-color: #eee;
+  border-radius: 6px;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.slot:hover span {
+  background-color: #ddd;
+}
+
+.slot input:checked + span {
+  background-color: #0077cc;
+  color: white;
+}
+
+.slot input:focus-visible + span {
+  outline: 2px solid #005fa3;
+  outline-offset: 2px;
+}
+
+.summary {
+  flex: 1;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.summary p {
+  margin: 1rem 0;
+}
+
+#confirm {
+  padding: 0.75rem 1rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#confirm:hover {
+  background-color: #005fa3;
+}
+#confirm:disabled {
+  background-color: #7a7c7e;
+  cursor: default;
+}
+
+.confirmation {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  border-top: 6px solid #2e9e5b;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: #2e9e5b;
+  color: white;
+  font-size: 2rem;
+  line-height: 3.5rem;
+}
+
+.confirmation-text {
+  color: #555;
+}
+
+.confirmation-details {
+  margin: 1.5rem 0 0;
+  text-align: left;
+}
+
+.confirmation-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.confirmation-details dt {
+  font-weight: 700;
+}
+
+.confirmation-details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.hidden {
+  display: none;
+}
