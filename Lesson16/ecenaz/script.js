@@ -92,7 +92,7 @@ class ShoppingCart {
       if (currentItem.name === name) {
         this.#items.splice(i, 1);
         console.log(` Name: '${name}' Removed successfully. `);
-       
+        return currentItem;
       }
 
       if (this.#items.length === 0) {
@@ -103,7 +103,7 @@ class ShoppingCart {
     console.warn(`Item not found: ${name}`);
   }
 
-  getTotal(name, quantity, price) {
+  getTotal() {
 
     let total = 0;
 
@@ -133,7 +133,7 @@ class ShoppingCart {
     }
 
     const total = this.getTotal();
-    console.log('Appliying the discount');
+    console.log('Applying the discount');
 
     const discountAmount = (total * discountPercent) / 100;
     const discountedTotal = total - discountAmount;
