@@ -25,10 +25,12 @@ form {
   margin: 24px 0;
 }
 
-input {
+.form-input {
   background: #4dad8f;
   border: none;
   border-radius: 8px;
+  padding: 16px;
+  color: #8fccb8;
   padding: 16px;
   color: #8fccb8;
 }

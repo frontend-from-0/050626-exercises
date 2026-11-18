@@ -7,7 +7,7 @@ const namePattern = /^[a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ' \-]*[a-zA-ZÀ-ÿ]$/;
 
 const onlyNumbersPattern = /^\d+$/;
 const expDatePattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
-
+const cardNumberPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$/;
 
 /**
  *
@@ -38,7 +38,6 @@ const successMsg = document.getElementById('success');
 
 let isFormValid = true;
 
-const successElement = document.getElementById('success');
 
 
 
@@ -101,8 +100,8 @@ function validateNumber(input, errorElement, length) {
     errorElement.textContent = 'The value should contain only number. Please provide valid input.';
     errorElement.classList.remove('hidden');
     isFormValid = false;
-  } else if (trimmedNumbers.length !== length) {
-    errorElement.textContent = `This area must contain ${length} digits. Please re-check.`;
+  } else if (!cardNumberPattern.test(trimmedNumbers)) {
+    errorElement.textContent = 'Please enter a valid card number (Visa, Mastercard, Amex, ...).';
     errorElement.classList.remove('hidden');
     isFormValid = false;
   } else {
@@ -154,7 +153,7 @@ expDate.addEventListener('input', function () {
 });
 
 cardNumber.addEventListener('change', function () {
-  validateNumber(cardNumber, cardNumberErrorMsg, 16);
+  validateNumber(cardNumber, cardNumberErrorMsg,16);
 });
 
 
