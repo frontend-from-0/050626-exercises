@@ -64,7 +64,7 @@ const workContacts = [
   },
 ];
 
-const emplyListOfContacts = [];
+const emptyListOfContacts = [];
 
 /*
 -----------------------------------------------------------
