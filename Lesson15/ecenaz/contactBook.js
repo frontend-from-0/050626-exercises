@@ -428,7 +428,9 @@ function partialNameSearch(name, contacts) {
 
   }
 
-  console.log(`No contact found with the name: ${name}`);
+  if (!found) {
+    console.log(`No contact found with the name: ${name}`);
+  }
 }
 
 partialNameSearch('e', familyContacts);
