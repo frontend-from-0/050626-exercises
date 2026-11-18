@@ -31,24 +31,24 @@ for (const productName in products) {
 
   products[productName].addToCartButton =
     document.getElementById(addToCartButtonId);
-    products[productName].incrementButton =
+  products[productName].incrementButton =
     document.getElementById(incrementButtonId);
 
-    products[productName].removeFromCartButton =
+  products[productName].removeFromCartButton =
     document.getElementById(removeFromCartButtonId);
-    products[productName].decrementButton =
+  products[productName].decrementButton =
     document.getElementById(decrementButtonId);
 
-    products[productName].quantitySpan =
+  products[productName].quantitySpan =
     document.getElementById(productName + '_quantity');
-    products[productName].cartDiv =
+  products[productName].cartDiv =
     document.getElementById(productName + '_cart');
 
   products[productName].addToCartButton
     .addEventListener('click', () => addToCart(productName));
 
   products[productName].incrementButton
-    .addEventListener('click', () => incrementProduct(productName));
+    .addEventListener('click', () => addToCart(productName));
 
   products[productName].removeFromCartButton.addEventListener('click', () =>
     removeFromCard(productName),
@@ -60,22 +60,14 @@ for (const productName in products) {
   products[productName].quantitySpan.textContent =
     products[productName].quantity;
 
-  updateTotal();
+
 
 }
+updateTotal();
+
 
 clearCartButton.addEventListener('click', clearCart);
 
-function incrementProduct(productName) {
-  products[productName].decrementButton
-    .removeAttribute('disabled');
-
-  products[productName].quantity++;
-
-  updateTotal();
-
-  products[productName].quantitySpan.textContent = products[productName].quantity;
-}
 
 function decrementProduct(productName) {
   if (products[productName].quantity >= 1) {
@@ -85,30 +77,36 @@ function decrementProduct(productName) {
     }
     products[productName].quantity--;
     updateTotal();
+    saveCart();
     products[productName].quantitySpan.textContent = products[productName].quantity;
   }
+  
 }
 
 function removeFromCard(productName) {
   products[productName].quantity = 0;
   products[productName].cartDiv.classList.add('hidden');
   updateTotal();
+  saveCart();
 }
 
 function addToCart(productName) {
   products[productName].cartDiv.classList.remove('hidden');
-  incrementProduct(productName);
+  products[productName].decrementButton.removeAttribute('disabled');
+  products[productName].quantity++;
+  products[productName].quantitySpan.textContent = products[productName].quantity;
   updateTotal();
+  saveCart();
 }
 
 function updateTotal() {
   let total = 0;
   for (const productName in products) {
     total += products[productName].quantity * products[productName].price;
-    totalPriceSpan.textContent = total;
-  }
 
-  saveCart();
+  }
+  totalPriceSpan.textContent = total;
+  
 }
 
 function clearCart() {
@@ -117,6 +115,7 @@ function clearCart() {
     products[productName].cartDiv.classList.add('hidden');
   }
   updateTotal();
+  saveCart();
 
 }
 
@@ -143,6 +142,6 @@ function loadCart() {
 }
 
 
-  
+
 
 
