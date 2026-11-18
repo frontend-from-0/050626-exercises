@@ -55,19 +55,10 @@ console.log('-------------------------');
 
 console.log('Ex.3---------------------');
 function normalizeEmail(email) {
-   // Validation: the input must be a string, otherwise .toLowerCase() would throw an error.
-   // I also check for '@' because a valid email address must contain it.
-   // If the input is invalid, show a message and stop the function early with return
+   
    if (typeof email !== 'string' || !email.includes('@')) {
 
       console.log('Invalid input. Please provide proper email address.');
-      return;
-   }
-
-   if (email.includes('@') && typeof email === 'string') {
-
-      const normalizedEmail = email.toLowerCase();
-      console.log(normalizedEmail);
       return;
    }
 
@@ -88,24 +79,6 @@ console.log('---------------------');
    - Log the domain to the console.
    - Example: "user@example.com" -> "example.com"
 */
-/*
-function getDomainWithSubstring(email) {
-
-
-   // Validation: input must be a string and contain '@', otherwise it is not a valid email. So I check for thah first.
-   if (typeof email !== 'string' || !email.includes('@')) {
-      console.log('Invalid input. Please provide proper email address.');
-      return;
-   }
-
-   // indexOf finds where '@' is, so substring can start right after it (+1 skips the '@').
-   // substring(start, end) returns the characters from start up to (but not including) end.
-   const atIndex = email.indexOf('@');
-   const domain = email.substring(atIndex + 1, email.length);
-   console.log(domain);
-}
-   */
-
 
 function getDomain(email) {
    // slice method
@@ -274,8 +247,7 @@ function truncateString(text, maxLength) {
       console.log(text);
    }
 
-   //slice(0, maxLength) takes the characters from the start of the text up to maxLength.
-   // I start at 0 because I want to keep the beginning of the text and cut off the end.
+
    let result = text;
    if (text.length > maxLength) {
       result = text.slice(0, maxLength) + '...';
@@ -429,14 +401,13 @@ function censorWord(sentence, target) {
       return;
    }
 
-   // I used .repeat() to create a string which has the same length as the target word. so that the replacement works for any length of the target wordi not just given stars number.
+
    const stars = '*'.repeat(target.length);
    const censored = sentence.replaceAll(target, stars);
 
    console.log(censored);
 
-   // const censored = sentence.replace(target, '*******');
-   // console.log(censored);
+   
 
 }
 console.log('Ex.14---------------------');
@@ -463,16 +434,9 @@ function startsWithA(str) {
       console.log('Does not start with A');
    }
 
-   /* if(str[0] === 'A'){
-   console.log('Starts with A);
-   }else {
-      console.log('Does not start with A);
-}
-   */
 
 }
 
-// I did not convert to lowercase because the task asks to check for a capital 'A'.
 console.log('Ex.15--------------------');
 startsWithA('Apple');
 startsWithA('Banana');
@@ -520,8 +484,7 @@ function gradeChecker(score) {
       return;
    }
 
-   // I used switch(true) because switch only checks exact matches with ===.
-   //This way, each case condition (like score >= 90) is checked, and the first true one runs.
+   
    switch (true) {
       case score >= 90:
          console.log('A');
@@ -535,7 +498,7 @@ function gradeChecker(score) {
       case score >= 60:
          console.log('D');
          return;
-      default:  // I used default instead of score <= 59, so any score below 60 (like 59.5) gets an F.Otherwise, a score like 59.5 would match no case and nothing would be logged.
+      default: 
          console.log('F');
 
    }
@@ -558,14 +521,13 @@ console.log('------------------------');
 function replaceCharacter(str, oldChar, newChar) {
 
 
-   // I check that oldChar is a real single character
-   // An empty value would never match any character, so nothing would be replaced.
+   
    if (typeof str !== 'string') {
       console.log('The input is a number, not text. Please check the input and write it as text.');
       return;
    }
 
-   // An empty oldChar would put newChar between every character.
+  
    if (oldChar === '') {
       console.log('The character to replace is empty. Please check the input.');
       return;
@@ -573,7 +535,7 @@ function replaceCharacter(str, oldChar, newChar) {
 
    let result = '';
 
-   for (i = 0; i < str.length; i++) {
+   for (let i = 0; i < str.length; i++) {
       if (str[i] === oldChar) {
          result += newChar;
       } else {
@@ -584,24 +546,6 @@ function replaceCharacter(str, oldChar, newChar) {
 }
 
 
-
-/* {// oldChar and newChar are converted to strings automatically by replaceAll(), so I do not check their type
-// I check that str is a string because replaceAll() only works on strings.
-if (typeof str !== 'string') {
-   console.log('The input is a number, not text. Please check the input and write it as text.');
-   return;
-}
-
-// An empty oldChar would put newChar between every character.
-if (oldChar === '') {
-   console.log('The character to replace is empty. Please check the input.');
-   return;
-}
-
-const newResult = str.replaceAll(oldChar, newChar);
-console.log(newResult);
-
-}*/
 console.log('Ex.18-------------------');
 replaceCharacter('banana', 'a', 'o');
 replaceCharacter(2026, '2', '9');
@@ -644,7 +588,7 @@ console.log('------------------------');
 */
 function trafficLight(color) {
 
-   // I did not use switch(true) here because the colors are exact values, not ranges.
+  
    switch (color) {
       case 'red':
          console.log('Stop');
@@ -676,7 +620,7 @@ console.log('------------------------');
 function isLongString(str) {
 
 
-   // Validation: input must be a string, because numbers do not have a .length property.
+ 
    if (typeof str !== 'string') {
       console.log(`The input is a ${typeof str}, not text. Please check the input.`);
       return;
@@ -704,7 +648,7 @@ console.log('------------------------');
    - Otherwise, log "This text is not spam."
 */
 function isSpam(text) {
-   // Validation: text must be a string, because only strings have toLowerCase().
+  
    if (typeof text !== 'string') {
       console.log(`The input is a ${typeof text}, not text. Please check the input.`);
       return;
@@ -741,11 +685,11 @@ function getTwoPartInitials(fullName) {
       return;
    }
 
-   // split(' ') divides the name at the space and returns an array
+ 
    const parts = fullName.split(' ');
 
 
-   // charAt(0) takes the first letter of each part; toUpperCase() makes it capital.
+   
    const firtsInitial = parts[0].charAt(0).toUpperCase();
    const secondInitial = parts[1].charAt(0).toUpperCase();
 
@@ -814,7 +758,7 @@ console.log('------------------------');
 */
 function containsNumber(str) {
 
-   // Validation: str must be a string, because only strings have match().
+  
    if (typeof str !== 'string') {
       console.log(`The input is a ${typeof str}, not text. Please check the input.`);
       return;
@@ -843,15 +787,8 @@ console.log('------------------------');
    - Log the padded string.
 */
 function padString(str, maxLength) {
-
-   if (str.length < maxLength) {
-      const padded = str.padEnd(maxLength, '*');
-
-      console.log(padded);
-   } else {
-      console.log(str);
-
-   }
+   const padded = str.padEnd(maxLength, '*');  
+      console.log(padded);  
 
 }
 
@@ -944,8 +881,7 @@ console.log('------------------------');
 */
 function calculate(a, operator, b) {
 
-   // Validation: a and b must be numbers.
-   // Otherwise '+' would join strings: '5' + 3 gives '53' instead of 8.
+
    
    if (typeof a !== 'number' || typeof b !== 'number') {
       console.log('Both values must be numbers. Please check the input.');
