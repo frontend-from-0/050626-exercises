@@ -585,23 +585,6 @@ function replaceCharacter(str, oldChar, newChar) {
 
 
 
-/* {// oldChar and newChar are converted to strings automatically by replaceAll(), so I do not check their type
-// I check that str is a string because replaceAll() only works on strings.
-if (typeof str !== 'string') {
-   console.log('The input is a number, not text. Please check the input and write it as text.');
-   return;
-}
-
-// An empty oldChar would put newChar between every character.
-if (oldChar === '') {
-   console.log('The character to replace is empty. Please check the input.');
-   return;
-}
-
-const newResult = str.replaceAll(oldChar, newChar);
-console.log(newResult);
-
-}*/
 console.log('Ex.18-------------------');
 replaceCharacter('banana', 'a', 'o');
 replaceCharacter(2026, '2', '9');
