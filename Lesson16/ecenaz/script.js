@@ -132,7 +132,7 @@ class ShoppingCart {
     }
 
     const total = this.getTotal();
-    console.log('Appliying the discount');
+    console.log('Applying the discount');
 
     const discountAmount = (total * discountPercent) / 100;
     const discountedTotal = total - discountAmount;
