@@ -39,7 +39,6 @@ const month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
 const day = tomorrow.getDate().toString().padStart(2, '0'); //I use padStart because month and day to have two digits.
 
 dateInput.min = `${year}-${month}-${day}`;
-console.log(dateInput.min);
 /* 
 Select the date, date will be written on the right side of the screen
 
