@@ -102,7 +102,7 @@ class ShoppingCart {
     console.warn(`Item not found: ${name}`);
   }
 
-  getTotal(name, quantity, price) {
+  getTotal() {
 
     let total = 0;
 
