@@ -218,7 +218,7 @@ Function: updateContact(name, newPhone, newEmail)
 function updateContact(name, newPhone, newEmail) {
   for (const contact of contacts) {
     for (const person of contact) {
-      if (name.toLocaleLowerCase() === person.name.toLocaleLowerCase()) {
+      if (name.trim().toLocaleLowerCase() === person.name.trim().toLocaleLowerCase()) {
         person.phone = newPhone;
         person.email = newEmail;
         console.log(
