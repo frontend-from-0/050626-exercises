@@ -122,7 +122,7 @@ timeButtons.forEach((button) => {
 });
 
 function allowSubmit() {
-  if (data.date && data.time) {
+  if (data.name && data.email && data.date && data.time) {
     confirmButton.removeAttribute('disabled');
   } else {
     confirmButton.setAttribute('disabled', true);
