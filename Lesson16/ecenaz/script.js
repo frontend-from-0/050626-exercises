@@ -91,7 +91,7 @@ class ShoppingCart {
       const currentItem = this.#items[i];
       if (currentItem.name === name) {
         this.#items.splice(i, 1);
-        console.log(` Name: '${name}' Removed successfully. `);
+        console.log(`Removed '${name}' from the cart.`);
         return currentItem;
       }
 
