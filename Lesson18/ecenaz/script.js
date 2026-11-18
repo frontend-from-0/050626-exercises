@@ -19,6 +19,8 @@ const confirmation = document.getElementById('confirmation-msg');
 const error = document.getElementById('error-msg');
 
 const data = {
+  name: null,
+  email: null,
   date: null,
   time: null,
 };
