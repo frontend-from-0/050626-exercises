@@ -319,7 +319,7 @@ const SearchPartical = (name) => {
 };
 
 searchPartical("ahmet");
-searchPpartical("ali");
+searchPartical("ali");
 
 console.log("Optional 2. -----------------");
 
@@ -334,20 +334,62 @@ console.log(contacts);
 
 console.log("Optional 3. -----------------");
 
-function findVary(searching) {
-  for (const contact of contacts) {
-    for (const person of contact) {
-      // Here we could ve used strict equal but i prefered includes.
-      if (
-        person.name
-          .toLocaleLowerCase()
-          .includes(searching.toLocaleLowerCase()) ||
-        person.phone.includes(searching) ||
-        person.email.toLocaleLowerCase().includes(searching.toLocaleLowerCase())
-      ) {
+function searchByParams(params) {
+  const supportedFields = ["name", "email", "phone"];
+
+  if (
+    params === null ||
+    typeof params !== "object" ||
+    Array.isArray(params) ||
+    Object.keys(params).length === 0 ||
+    Object.keys(params).some((field) => !supportedFields.includes(field)) ||
+    Object.values(params).some(
+      (value) => typeof value !== "string" || !value.trim(),
+    )
+  ) {
+    logWithEmptySpace(
+      "Incorrect input. Provide a non-empty object with name, email, and/or phone string values.",
+    );
+    return;
+  }
+
+  const normalizedParams = Object.fromEntries(
+    Object.entries(params).map(([field, value]) => [
+      field,
+      field === "phone" ? value.trim() : value.trim().toLocaleLowerCase(),
+    ]),
+  );
+  let foundContact = false;
+
+  for (const contactList of contacts) {
+    for (const person of contactList) {
+      const matches = Object.entries(normalizedParams).every(
+        ([field, value]) => {
+          const contactValue = person[field];
+          const normalizedContactValue =
+            field === "phone"
+              ? contactValue.trim()
+              : contactValue.trim().toLocaleLowerCase();
+
+          return normalizedContactValue.includes(value);
+        },
+      );
+
+      if (matches) {
         console.log(person);
-        return;
+        foundContact = true;
       }
     }
   }
+
+  if (!foundContact) {
+    console.log("Contact not found");
+  }
 }
+
+searchByParams({ name: "ahmet" });
+searchByParams({ email: "asya@gmail.com" });
+searchByParams({ phone: "05222222222" });
+searchByParams({ name: "Asya", email: "asya@gmail.com" });
+searchByParams({ name: "No matching contact" });
+
