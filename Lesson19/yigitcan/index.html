@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Validation</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="lesson19.css" />
   </head>
   <body>
     <main>
@@ -13,14 +13,7 @@
           <label for="email">Email</label>
           <input
             id="email"
-            type="email"
-            placeholder="email@example.com"
-            name="email"
-          />
-          <p id="emailError" class="input-error hidden">
-            Please provide a valid email address.
-          <input
-            id="email"
+            class="form-input"
             type="email"
             placeholder="email@example.com"
             name="email"
@@ -34,9 +27,11 @@
           <label for="phone">Phone</label>
           <input
             id="phone"
+            class="form-input"
             type="tel"
             placeholder="555 123 4567"
             name="phoneNumber"
+            aria-describedby="phoneError"
           />
           <p id="phoneError" class="input-error hidden">
             Please provide a valid phone number.
@@ -46,9 +41,11 @@
           <label for="firstname">First Name</label>
           <input
             id="firstname"
+            class="form-input"
             type="text"
             placeholder="Sophia"
             name="firstname"
+            aria-describedby="firstNameError"
           />
           <p id="firstNameError" class="input-error hidden"></p>
         </div>
@@ -56,9 +53,11 @@
           <label for="lastname">Last Name</label>
           <input
             id="lastname"
+            class="form-input"
             type="text"
             placeholder="Clark"
             name="lastname"
+            aria-describedby="lastNameError"
           />
           <p id="lastNameError" class="input-error hidden"></p>
         </div>
@@ -67,20 +66,22 @@
           <label for="cardnumber">Card Number</label>
           <input
             id="cardnumber"
+            class="form-input"
             type="text"
             placeholder="1234 5678 9101 1121"
             name="cardnumber"
+            aria-describedby="cardNumError"
           />
           <p id="cardNumError" class="input-error hidden"></p>
         </div>
         <div class="input-group">
           <label for="expDate">Expiration Date</label>
-          <input id="expDate" type="text" placeholder="MMYY" name="expDate" />
+          <input id="expDate" class="form-input" type="text" placeholder="MMYY" name="expDate" aria-describedby="cardExpiryError" />
           <p id="cardExpiryError" class="input-error hidden"></p>
         </div>
         <div class="input-group">
           <label for="cvv">CVV</label>
-          <input id="cvv" type="text" placeholder="123" name="cvv" />
+          <input id="cvv" class="form-input" type="text" placeholder="123" name="cvv" aria-describedby="cardCvvError" />
           <p id="cardCvvError" class="input-error hidden"></p>
         </div>
         <div class="btn-group">
@@ -100,6 +101,6 @@
         </div>
       </div>
     </main>
-    <script src="./script.js"></script>
+    <script src="./lesson19.js"></script>
   </body>
 </html>
