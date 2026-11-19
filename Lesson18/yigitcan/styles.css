@@ -1,139 +1,135 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
-  margin: 0;
-  padding: 0;
-}
+/**
+ *
+ * 1. Date input - date
+ * 2. Buttons with class slot - time
+ * 3. Date Span
+ * 4. Time Span
+ * 5. Confirm booking button
+ * 6. Form element
+ */
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
-}
+const dateInput = document.getElementById('date');
+const timeInputs = document.querySelectorAll('.slot input[type="radio"]');
+const infoInputs = document.querySelectorAll('.personal-info');
+const dateSpan = document.getElementById('selected-date');
+const timeSpan = document.getElementById('selected-time');
+const nameSpan = document.getElementById('selected-name');
+const emailSpan = document.getElementById('selected-email');
+const phoneSpan = document.getElementById('selected-phone');
+const confirmButton = document.getElementById('confirm');
+const formElement = document.getElementById('booking-form');
+const confirmation = document.getElementById('confirmation-msg');
+const error = document.getElementById('error-msg');
+const tomorrow = new Date();
 
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+tomorrow.setDate(tomorrow.getDate() + 1);
 
-.booking {
-  display: flex;
-  gap: 2rem;
-}
+const year = tomorrow.getFullYear();
+const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+const day = String(tomorrow.getDate()).padStart(2, '0');
 
-.calendar {
-  flex: 2;
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-}
+dateInput.min = `${year}-${month}-${day}`;
 
-.calendar label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-#date {
-  padding: 0.5rem;
-  font-size: 1rem;
-  width: 100%;
-  margin-bottom: 1.5rem;
-}
-
-fieldset {
-  border: none;
-}
-
-.timeslots {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 1rem;
-}
-
-.slot{
-  padding: 1rem;
-  background-color: #eee;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
-}
-
-.slot input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-}
+const data = {
+  date: null,
+  time: null,
+  name: null,
+  email: null,
+  phone: null,
+};
 
 
-.slot:hover {
-  background-color: #ddd;
+const infoGroup = {
+  name: nameSpan,
+  email: emailSpan,
+  phone: phoneSpan
 }
 
-.slot:has(input[type="radio"]:checked) {
-  background-color: #0077cc;
-  color: white;
+/* 
+Select the date, date will be written on the right side of the screen
+
+
+....
+
+Write name -> name should be displayed on the right side
+Write email & / phone -> they should be displayed on the right side
+
+
+...
+After all inputs are filled, confirmation button should become enabled
+User should should be able to submit the form (press enter on keyboard or click confirm button), and see the confirmation message on the screen
+*/
+
+// Event types: click, change, submit, blur...
+dateInput.addEventListener('change', function () {
+  const selectedDate = new Date(dateInput.value).toLocaleDateString('tr-TR');
+
+  if (!selectedDate || selectedDate === 'Invalid Date') {
+    dateSpan.textContent = '-';
+    data.date = null;
+  } else {
+    dateSpan.textContent = selectedDate;
+    data.date = selectedDate;
+  }
+
+  allowSubmit();
+});
+
+// If you had selected timeSlotButtons using document.getElementsByClassName('slot') then you'd have to copy them first, before being able to run forEach on them!!!!
+// const copy = [...timeSlotButtons]; copy.forEach....
+
+timeInputs.forEach((input) => {
+  input.addEventListener('change', function (event) {
+    const selectedTime =
+      event.target.value === 'on'
+        ? event.target.closest('label').textContent.trim()
+        : event.target.value;
+
+    timeSpan.textContent = selectedTime;
+    data.time = selectedTime;
+
+    allowSubmit();
+  });
+});
+
+
+
+
+
+infoInputs.forEach((input) => {
+
+  input.addEventListener('input', function () {
+   
+    if(input.value) {
+      data[input.name] = input.value;
+      infoGroup[input.name].textContent = input.value;
+    } else {
+    infoGroup[input.name].textContent = '-';
+      data[input.name] = null;
+    }
+
+    allowSubmit();
+  });
+
+})
+
+function allowSubmit() {
+  if (data.date && data.time && data.name && data.email && data.phone) {
+    confirmButton.removeAttribute('disabled');
+  } else {
+    confirmButton.setAttribute('disabled', true);
+  }
 }
 
-.slot:focus-within {
-  outline: 3px solid #005fa3;
-  outline-offset: 2px;
-}
 
-.info-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.info-container label {
-  font-size: 1rem;
-}
-
-.info-container input {
-
-width: 100%;
-padding: 1rem;
-background-color: #eee;
-border-radius: 5px;
-font-size: 0.75rem;
-} 
-
-.summary {
-  flex: 1;
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-.summary p {
-  margin: 1rem 0;
-}
-
-#confirm {
-  padding: 0.75rem 1rem;
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-#confirm:hover {
-  background-color: #005fa3;
-}
-#confirm:disabled {
-  background-color: #7a7c7e;
-  cursor: default;
-}
-
-.hidden {
-  display: none;
-}
+formElement.addEventListener('submit', function (event) {
+  event.preventDefault();
+  console.log(event);
+  if (data.date && data.time && data.name && data.email && data.phone)  {
+    formElement.classList.add('hidden');
+    confirmation.classList.remove('hidden');
+  } else {
+    error.classList.remove('hidden');
+    confirmation.classList.add('hidden');
+  }
+});
