@@ -8,8 +8,8 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     }
     return response.json();
   })
-  .then((data) => {
-    renderInfo(data);
+  .then((posts) => {
+    renderInfo(posts);
   })
   .catch((error) => {
     console.error(error);
@@ -24,71 +24,61 @@ function createPostCard(posts) {
   const article = document.createElement("article");
   const heading = document.createElement("h2");
   const body = document.createElement("p");
-  const button = document.createElement("button");
 
-  container.appendChild(article);
-  article.append(heading, body, button);
   article.classList.add("post-card");
-  button.classList.add("btn");
+  article.append(heading, body);
+  container.appendChild(article);
 
   const randomPost = getRandomPost(posts);
   heading.textContent = randomPost.title.toUpperCase();
   body.textContent = randomPost.body;
-  button.textContent = "Reveal More";
-
-  button.addEventListener("click", () => {
-    const randomPost2 = getRandomPost(posts);
-    heading.textContent = randomPost2.title.toUpperCase();
-    body.textContent = randomPost2.body;
-    button.textContent = "Reveal More";
-  });
 }
 
 function removePostCards() {
   const cards = container.querySelectorAll(".post-card");
+
   if (cards.length === 0) {
     return;
   }
+
   cards[cards.length - 1].remove();
 }
 
 function renderInfo(posts) {
-  const btnGrp = document.createElement("div");
-  const addMore = document.createElement("button");
-  main.prepend(btnGrp);
-  btnGrp.classList.add("button-group");
-  btnGrp.appendChild(addMore);
-  addMore.classList.add("btn");
-  addMore.textContent = "Add More";
-  addMore.classList.add("hidden");
+  const buttonGroup = document.createElement("div");
+  const addMoreButton = document.createElement("button");
+  const removePostButton = document.createElement("button");
+  const maxPosts = 9;
 
-  const removePost = document.createElement("button");
-  btnGrp.appendChild(removePost);
-  removePost.classList.add("btn", "hidden");
-  removePost.textContent = "Remove Post";
+  buttonGroup.classList.add("button-group");
+  addMoreButton.classList.add("btn");
+  addMoreButton.textContent = "Add More";
+  removePostButton.classList.add("btn");
+  removePostButton.textContent = "Remove Post";
+  buttonGroup.append(addMoreButton, removePostButton);
+  main.prepend(buttonGroup);
 
-  const button2 = document.createElement("button");
-  container.appendChild(button2);
-  button2.textContent = "REVEAL";
-  button2.classList.add("btn", "btn-big");
+  createPostCard(posts);
 
-  button2.addEventListener("click", () => {
-    createPostCard(posts);
-    button2.classList.add("hidden");
-    addMore.classList.remove("hidden");
-    removePost.classList.remove("hidden");
-  });
+  function updateButtonStates() {
+    const postCount = container.querySelectorAll(".post-card").length;
+    addMoreButton.disabled = postCount >= maxPosts;
+    removePostButton.disabled = postCount === 0;
+  }
 
-  addMore.addEventListener("click", () => {
-    const limit = container.querySelectorAll(".post-card").length;
-    if (limit < 9) {
+  addMoreButton.addEventListener("click", () => {
+    const postCount = container.querySelectorAll(".post-card").length;
+
+    if (postCount < maxPosts) {
       createPostCard(posts);
-    } else {
-      alert("Maximum 9 Post is Allowed");
+      updateButtonStates();
     }
   });
 
-  removePost.addEventListener("click", () => {
+  removePostButton.addEventListener("click", () => {
     removePostCards();
+    updateButtonStates();
   });
+
+  updateButtonStates();
 }
