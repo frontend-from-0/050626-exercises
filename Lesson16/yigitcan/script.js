@@ -32,6 +32,11 @@ Node.js or a browser console.
 
 class ShoppingCart {
   #items;
+  #discounts = {
+    SAVE10: 0.10,
+    SAVE20: 0.20,
+    SAVE30: 0.30,
+  };
 
   constructor() {
     this.#items = [
@@ -45,6 +50,7 @@ class ShoppingCart {
         },
       },
     ];
+    console.log("Shopping cart initialized.");
   }
 
   viewCart() {
@@ -64,59 +70,79 @@ class ShoppingCart {
   }
 
   addItem(name, quantity, price) {
+    console.log(`Adding ${quantity} ${name} to the cart.`);
+
     for (let i = 0; i < this.#items.length; i++) {
       const currentItem = this.#items[i];
 
       if (currentItem.name === name) {
         currentItem.quantity += quantity;
+        console.log(
+          `Updated ${name} quantity to ${currentItem.quantity}.`,
+        );
         return currentItem;
       }
     }
-    this.#items.push({
+
+    const newItem = {
       id: Date.now(),
       name,
       quantity,
       price,
-    });
+    };
+    this.#items.push(newItem);
+    console.log(`Added ${name} to the cart.`);
+    return newItem;
   }
 
   removeItem(name) {
+    console.log(`Removing ${name} from the cart.`);
+
     for (let i = 0; i < this.#items.length; i++) {
       const currentItem = this.#items[i];
 
       if (currentItem.name === name) {
         this.#items.splice(i, 1);
+        console.log(`Removed ${currentItem.name} from the cart.`);
         return `Removed: ${currentItem.name}`;
       }
     }
-      return `${name} does not exist`;
+
+    console.log(`${name} was not found in the cart.`);
+    return `${name} does not exist`;
+  }
+
+  getTotal() {
+    console.log("Calculating cart total.");
+    let sum = 0;
+
+    for (let i = 0; i < this.#items.length; i++) {
+      const currentItem = this.#items[i];
+      sum += currentItem.price.amount * currentItem.quantity;
     }
 
-  getTotal()  {
-     let sum = 0;
-     for (let i = 0; i < this.#items.length; i++) {
-      const currentItem = this.#items[i];
-     sum += currentItem.price.amount * currentItem.quantity;
-     }
+    console.log(`Cart total: ${sum}.`);
     return sum;
-    
-    }
+  }
 
   applyDiscount(discountCode) {
-    const discounts = {
-       SAVE10: 0.10,
-       SAVE20: 0.20,
-       SAVE30: 0.30
+    console.log(`Applying discount code: ${discountCode}.`);
+    const discount = this.#discounts[discountCode];
+
+    if (discount === undefined) {
+      console.log(`Invalid discount code: ${discountCode}.`);
+      return;
     }
 
-        const total = this.getTotal();
-        const applied = total * this.#discounts[discountCode];
-        const finalPrice = total - applied;
-        console.log(`Discount applied: ${applied}  \nDiscounted Price: ${finalPrice}`);
-        return;
-    
+    const total = this.getTotal();
+    const applied = total * discount;
+    const finalPrice = total - applied;
+    console.log(
+      `Discount applied: ${applied}  \nDiscounted Price: ${finalPrice}`,
+    );
+    return;
   }
-  }
+}
 
 
 const shoppingCart1 = new ShoppingCart();
@@ -177,3 +203,4 @@ console.log(shoppingCart1.applyDiscount("SAVE30"));
      code is valid.
 3. Use an object to store discount codes and their values.
 */
+
