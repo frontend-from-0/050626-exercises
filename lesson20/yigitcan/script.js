@@ -96,7 +96,6 @@ function removeFromCard(productName) {
 function addToCart(productName) {
   products[productName].cartDiv.classList.remove('hidden');
   incrementProduct(productName);
-  updateTotal();
 }
 
 function updateTotal() {
