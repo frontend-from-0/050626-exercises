@@ -102,8 +102,8 @@ function updateTotal() {
   let total = 0;
   for (const productName in products) {
     total += products[productName].quantity * products[productName].price;
-    totalPriceSpan.textContent = total;
   }
+  totalPriceSpan.textContent = total;
 }
 
 function clearCart() {
