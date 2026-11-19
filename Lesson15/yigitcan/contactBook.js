@@ -301,7 +301,7 @@ Contact Book in action.
 
 console.log("Optional 1. -----------------");
 
-const partial = (name) => {
+const SearchPartical = (name) => {
   for (const contact of contacts) {
     for (const person of contact) {
       if (person.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
