@@ -44,8 +44,11 @@ function createPostCard(posts) {
   });
 }
 
-function removePostCards(posts) {
+function removePostCards() {
   const cards = container.querySelectorAll(".post-card");
+  if (cards.length === 0) {
+    return;
+  }
   cards[cards.length - 1].remove();
 }
 
