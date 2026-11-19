@@ -314,8 +314,8 @@ const SearchPartical = (name) => {
   console.log("Contact not found");
 };
 
-partial("ahmet");
-partial("ali");
+searchPartical("ahmet");
+searchPpartical("ali");
 
 console.log("Optional 2. -----------------");
 
