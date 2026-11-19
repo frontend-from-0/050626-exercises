@@ -2,6 +2,7 @@ const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const phonePattern = /^\+?\d(?:\s?\d){9,19}$/;
 const namePattern = /^[a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ' \-]*[a-zA-ZÀ-ÿ]$/;
 const cardPattern = /^\d+$/;
+const cardNumberPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9]{2}|7(?:0[0-9]|1[0-9]|20))[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35[0-9]{3})[0-9]{11})$/;
 
 /**
  *
@@ -32,7 +33,6 @@ const detailsEmail = document.getElementById('detailsEmail');
 const detailsCN = document.getElementById('detailsCN');
 const detailsED = document.getElementById('detailsED');
 const detailsCvv = document.getElementById('detailsCvv');
-const formHidden = document.getElementById('checkoutForm');
 
 
 
@@ -75,22 +75,19 @@ function validateName(input, errorElement) {
   }
 }
 
-function validateCardNumber(cardnum){
-const num = cardnum.replace(/\s/g, "");
-  if(!cardPattern.test(num)) {
-    cardNumberErrorMsg.textContent = 'Card number must contain only numbers';
-    cardNumberErrorMsg.classList.remove('hidden');
-    isFormValid = false;
-  } else if(num.length !== 16) {
-    cardNumberErrorMsg.textContent = 'Card number must be 16 digits long';
+function validateCardNumber(cardnum) {
+  const num = cardnum.replace(/\s/g, '');
+
+  if (!cardNumberPattern.test(num)) {
+    cardNumberErrorMsg.textContent = 'Enter a valid card number.';
     cardNumberErrorMsg.classList.remove('hidden');
     isFormValid = false;
   } else {
-const formatted = num.match(/.{1,4}/g).join(" ")
+    const formatted = num.match(/.{1,4}/g).join(' ');
     cardNumberErrorMsg.classList.add('hidden');
     cardNumberInput.value = formatted;
   }
-};
+}
 
 
 function validateExpDate(expDate) {
@@ -183,16 +180,20 @@ formElement.addEventListener('submit', function (event) {
  
 
   if (isFormValid) {
-    formHidden.classList.add('hidden');
+    formElement.classList.add('hidden');
     successMsg.classList.remove('hidden');
     detailsFN.textContent = firstName.value;
     detailsLN.textContent = lastName.value;
     detailsPhone.textContent = phoneInput.value;
     detailsEmail.textContent = emailInput.value;
-    const cardNumberAsterisked = "*".repeat(12) + cardNumberInput.value.replace(/\s/g, "").slice(-4);
+    const cardNumberAsterisked = '*'.repeat(
+      cardNumberInput.value.replace(/\s/g, '').length,
+    );
     detailsCN.textContent = cardNumberAsterisked;
-    detailsED.textContent = cardExpInput.value;
-    const CvvAsterisked = "*".repeat(2) + cardCvvInput.value.slice(-1);
-    detailsCvv.textContent = CvvAsterisked
+    detailsED.textContent = '*'.repeat(
+      cardExpInput.value.replace(/[\/\s]/g, '').length,
+    );
+    const cvvAsterisked = '*'.repeat(cardCvvInput.value.length);
+    detailsCvv.textContent = cvvAsterisked;
     
   }});
