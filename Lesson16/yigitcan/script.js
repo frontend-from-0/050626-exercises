@@ -109,9 +109,11 @@ class ShoppingCart {
        SAVE30: 0.30
     }
 
-        const applied = this.getTotal() * discounts[discountCode];
-        const finalPrice = this.getTotal() - applied;
-        return `Discount applied: ${applied}  \nDiscounted Price: ${finalPrice}`;
+        const total = this.getTotal();
+        const applied = total * this.#discounts[discountCode];
+        const finalPrice = total - applied;
+        console.log(`Discount applied: ${applied}  \nDiscounted Price: ${finalPrice}`);
+        return;
     
   }
   }
