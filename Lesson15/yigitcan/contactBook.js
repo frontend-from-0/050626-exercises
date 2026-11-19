@@ -126,6 +126,7 @@ function addContact(name, phone, email, contacts) {
     );
     return;
   }
+
   if (
     typeof name !== "string" ||
     typeof phone !== "string" ||
@@ -137,18 +138,31 @@ function addContact(name, phone, email, contacts) {
     return;
   }
 
-  console.log("Adding a contact...");
+  const trimmedName = name.trim();
+  const trimmedPhone = phone.trim();
+  const trimmedEmail = email.trim();
+
+  if (!trimmedName || !trimmedPhone || !trimmedEmail) {
+    logWithEmptySpace("Name, phone, and email cannot be empty.");
+    return;
+  }
+
   for (const contact of contacts) {
-    if (name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()) {
+    if (
+      trimmedName.toLocaleLowerCase() ===
+      contact.name.trim().toLocaleLowerCase()
+    ) {
       logWithEmptySpace("Contact already exists.");
       return;
     }
   }
 
-  contacts.push({ name, phone, email }); // contacts.push({ name: name, phone: phone, email:email });
-  logWithEmptySpace(
-    `Contact (${name}, ${phone}, ${email}) added successfully.`,
-  );
+  console.log("Adding a contact...");
+  contacts.push({
+    name: trimmedName,
+    phone: trimmedPhone,
+    email: trimmedEmail,
+  });
 }
 
 addContact("John", "0555 555 55 55", "jhon@gmail.com", personalContacts);
