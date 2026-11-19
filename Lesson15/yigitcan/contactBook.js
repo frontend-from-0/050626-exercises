@@ -119,6 +119,14 @@ Function: addContact(name, phone, email)
   exists before adding. If found, logs a warning and returns.
 - Logs "Contact added successfully." if everything is good.
 */
+function findContactIndex(name, contacts) {
+  const normalizedName = name.trim().toLocaleLowerCase();
+
+  return contacts.findIndex(
+    (contact) => normalizedName === contact.name.trim().toLocaleLowerCase(),
+  );
+}
+
 function addContact(name, phone, email, contacts) {
   if (!Array.isArray(contacts)) {
     logWithEmptySpace(
@@ -147,14 +155,9 @@ function addContact(name, phone, email, contacts) {
     return;
   }
 
-  for (const contact of contacts) {
-    if (
-      trimmedName.toLocaleLowerCase() ===
-      contact.name.trim().toLocaleLowerCase()
-    ) {
-      logWithEmptySpace("Contact already exists.");
-      return;
-    }
+  if (findContactIndex(trimmedName, contacts) !== -1) {
+    logWithEmptySpace("Contact already exists.");
+    return;
   }
 
   console.log("Adding a contact...");
@@ -202,14 +205,15 @@ function viewContact(name, contacts) {
 
   console.log(`Viewing contact ${name}`);
 
-  for (const contact of contacts) {
-    if (name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()) {
-      console.log("Contact Found");
-      console.log(
-        `Name: ${contact.name} Phone: ${contact.phone} Email: ${contact.email}`,
-      );
-      return;
-    }
+  const foundIndex = findContactIndex(name, contacts);
+
+  if (foundIndex !== -1) {
+    const contact = contacts[foundIndex];
+    console.log("Contact Found");
+    console.log(
+      `Name: ${contact.name} Phone: ${contact.phone} Email: ${contact.email}`,
+    );
+    return;
   }
 
   console.log(`No contact found with the name: ${name}`);
@@ -231,15 +235,16 @@ Function: updateContact(name, newPhone, newEmail)
 
 function updateContact(name, newPhone, newEmail) {
   for (const contact of contacts) {
-    for (const person of contact) {
-      if (name.trim().toLocaleLowerCase() === person.name.trim().toLocaleLowerCase()) {
-        person.phone = newPhone;
-        person.email = newEmail;
-        console.log(
-          `Contact updated successfully. Updated contact is: ${person.name} ${person.phone} ${person.email}`,
-        );
-        return;
-      }
+    const foundIndex = findContactIndex(name, contact);
+
+    if (foundIndex !== -1) {
+      const person = contact[foundIndex];
+      person.phone = newPhone;
+      person.email = newEmail;
+      console.log(
+        `Contact updated successfully. Updated contact is: ${person.name} ${person.phone} ${person.email}`,
+      );
+      return;
     }
   }
   console.log(`No contact found with the name: ${name}`);
@@ -262,14 +267,13 @@ Function: removeContact(name)
 
 function removeContact(name) {
   for (const contact of contacts) {
-    for (const person of contact) {
-      if (name.toLocaleLowerCase() === person.name.toLocaleLowerCase()) {
-        const foundIndex = contact.indexOf(person);
-        contact.splice(foundIndex, 1);
-        console.log("Contact removed successfully");
-        console.log("Updated contact list is: ", contacts);
-        return;
-      }
+    const foundIndex = findContactIndex(name, contact);
+
+    if (foundIndex !== -1) {
+      contact.splice(foundIndex, 1);
+      console.log("Contact removed successfully");
+      console.log("Updated contact list is: ", contacts);
+      return;
     }
   }
   console.log("No contact found with the name:" + name);
