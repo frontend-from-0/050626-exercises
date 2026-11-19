@@ -2,9 +2,17 @@ const container = document.querySelector(".container");
 const main = document.querySelector("main");
 
 fetch("https://jsonplaceholder.typicode.com/posts")
-  .then((response) => response.json())
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+    return response.json();
+  })
   .then((data) => {
     renderInfo(data);
+  })
+  .catch((error) => {
+    console.error(error);
   });
 
 function getRandomPost(posts) {
