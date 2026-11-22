@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;  
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    margin-left: 20px;
+    color: darkcyan;
+}
+
+h2 {
+    margin-left: 30px;
+    color: chocolate;
+}
+
+p {
+    margin-left: 40px;
+    color: brown;
+}
