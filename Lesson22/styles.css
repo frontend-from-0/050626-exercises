@@ -18,14 +18,17 @@
   --color-shadow: rgb(28 31 38 / 6%);
 
   --font-sans: "Segoe UI", Candara, "Trebuchet MS", sans-serif;
+  --radius-xm: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1.25rem;
   --space-lg: 2rem;
-  --space-xlg: 6rem;
+  --space-xlg: 3rem;
   --max-width: 42rem;
+  --max-width-form: 30rem;
+   --content-width: 75rem;
 }
 
 *,
@@ -49,6 +52,8 @@ body {
 }
 
 nav {
+    width: 100%;
+  max-width: var(--content-width);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -58,11 +63,12 @@ nav {
 }
 
 .container {
-  max-width: var(--max-width);
+   width: 100%;
+  max-width: var(--content-width);
   padding: var(--space-md);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
 h1 {
@@ -83,7 +89,6 @@ h1 {
   box-shadow: 0 1px 2px var(--color-shadow);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: var(--space-lg);
 
@@ -104,7 +109,7 @@ h1 {
 }
 
 .button {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 1.5rem;
   display: inline-block;
   color: var(--color-button-text);
   background-color: var(--color-button);
@@ -157,6 +162,23 @@ h1 {
   display: flex;
   justify-content: center;
   gap: var(--space-md);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-sm);
+  padding: 20px 50px;
+  background-color: var(--color-bg-soft);
+  max-width: var(--max-width-form);
+  margin: 1rem;
+}
+
+input {
+border-radius: var(--radius-xm);
+padding: var(--space-sm);
 }
 
 .hidden {

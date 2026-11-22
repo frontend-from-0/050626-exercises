@@ -6,6 +6,22 @@
 const firstNameInput = document.getElementById('firstName');
 const lastNameInput = document.getElementById('lastName');
 
+let isFirstNameFocus = true;
+let isLastNameFocus = true;
+
+firstNameInput.addEventListener("focus", () => {
+  if (isFirstNameFocus) {
+    firstNameInput.value = "";
+    isFirstNameFocus = false;
+  }
+});
+
+lastNameInput.addEventListener("focus", () => {
+  if (isLastNameFocus) {
+    lastNameInput.value = "";
+    isLastNameFocus = false;
+  }
+});
 
 console.log(window);
 
