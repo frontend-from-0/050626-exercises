@@ -1,0 +1,297 @@
+:root {
+  --color-bg: #f4f5f7;
+  --color-bg-soft: #eef0f4;
+  --color-surface: #ffffff;
+  --color-border: #e3e6ec;
+  --color-text: #1c1f26;
+  --color-text-muted: #5f6572;
+  --color-button: #e8eaef;
+  --color-button-hover: #dcdee5;
+  --color-button-text: #1c1f26;
+  /* Darker than the first version so white text reaches the 4.5:1 contrast of WCAG AA */
+  --color-success: #1f7a4a;
+  --color-success-hover: #186139;
+  --color-success-text: #ffffff;
+  --color-danger: #b3261e;
+  --color-danger-hover: #8f1d17;
+  --color-danger-text: #ffffff;
+  --color-focus: #1a5fe0;
+  --color-shadow: rgb(28 31 38 / 6%);
+
+  --color-input-border: #6b7280;
+  --color-field-error: #b42318;
+  --color-status-success-bg: #e3f4ea;
+  --color-status-success-text: #14532d;
+  --color-status-error-bg: #fdecea;
+  --color-status-error-text: #8a1c14;
+  --color-status-info-bg: #e8f0fe;
+  --color-status-info-text: #1d3b7a;
+
+  --font-sans: "Segoe UI", Candara, "Trebuchet MS", sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --max-width: 42rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--color-bg-soft), transparent),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-soft) 100%);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+}
+
+main {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 0 var(--space-md) var(--space-lg);
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-text);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-md);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ---------- Cards (user list) ---------- */
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 1px 2px var(--color-shadow);
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  /* min-height 2.75rem = 44px: comfortable touch target */
+  min-height: 2.75rem;
+  padding: 0.625rem 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-button-text);
+  background-color: var(--color-button);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--color-button-hover);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button--success {
+  background-color: var(--color-success);
+  color: var(--color-success-text);
+  border-color: var(--color-success);
+}
+
+.button--success:hover:not(:disabled) {
+  background-color: var(--color-success-hover);
+  border-color: var(--color-success-hover);
+}
+
+.button--danger {
+  background-color: var(--color-danger);
+  color: var(--color-danger-text);
+  border-color: var(--color-danger);
+}
+
+.button--danger:hover:not(:disabled) {
+  background-color: var(--color-danger-hover);
+  border-color: var(--color-danger-hover);
+}
+
+/* One visible focus style for everything the keyboard can reach */
+.button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Forms ---------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 1px 2px var(--color-shadow);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+}
+
+/* The error is not only red: the border gets thicker too (not colour alone) */
+input[aria-invalid="true"] {
+  border-color: var(--color-field-error);
+  border-width: 2px;
+}
+
+.field-error {
+  margin: 0;
+  color: var(--color-field-error);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Status messages ---------- */
+
+.status {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow-wrap: anywhere;
+}
+
+/* The element stays in the page (screen readers need it there to announce changes),
+   it just takes no space while it has no text. */
+.status:empty {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Under a form there is a gap above instead of below */
+.form + .status {
+  margin: var(--space-md) 0 0;
+}
+
+.form + .status:empty {
+  margin: 0;
+}
+
+.status--success {
+  background-color: var(--color-status-success-bg);
+  color: var(--color-status-success-text);
+  border-color: var(--color-status-success-text);
+}
+
+.status--error {
+  background-color: var(--color-status-error-bg);
+  color: var(--color-status-error-text);
+  border-color: var(--color-status-error-text);
+}
+
+.status--info {
+  background-color: var(--color-status-info-bg);
+  color: var(--color-status-info-text);
+  border-color: var(--color-status-info-text);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 30rem) {
+  .card-actions {
+    width: 100%;
+  }
+
+  .card-actions .button {
+    flex: 1;
+  }
+
+  nav .button {
+    flex: 1 1 100%;
+  }
+}
+
+/* Respect people who turned animations off in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update user</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+  </head>
+  <body>
+    <nav aria-label="Main">
+      <a href="../index.html" class="button">Back to users</a>
+    </nav>
+    <main>
+      <h1>Update user</h1>
+      <form id="updateUserForm" class="form" novalidate>
+        <div class="form-field">
+          <label for="firstName">First name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            autocomplete="given-name"
+            maxlength="50"
+            required
+            aria-describedby="firstNameError"
+          />
+          <p class="field-error" id="firstNameError"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="lastName">Last name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            autocomplete="family-name"
+            maxlength="50"
+            required
+            aria-describedby="lastNameError"
+          />
+          <p class="field-error" id="lastNameError"></p>
+        </div>
+
+        <button type="submit" class="button button--success">Update user</button>
+      </form>
+      <p class="status" id="statusMessage" role="status"></p>
+    </main>
+
+    <script src="../utils.js"></script>
+    <script src="./update.js"></script>
+  </body>
+</html>
